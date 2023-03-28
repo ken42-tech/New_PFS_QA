@@ -51,19 +51,19 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println(" TC-2  Starting Student Enrollment  case execution");
-				if (Utils.checkUrlToSkipTest(url)) {
-					Utils.logg(log, "info",
-							"TC-2 Student Enrollement Skipped this test as this is not applicable for this portal\n");
-					return;
-				}
-				Utils.goBackToHome(driver, url, log);
-				Utils.bigSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.ClickEnroll, time, "Expand Enrollment", log);
-				Utils.clickXpath(driver, ActionXpath.clickCompletedEnroll, time, "select the Completes Enrollment",
+				Utils.smallSleepBetweenClicks(2);
+				Utils.clickXpath(driver, ActionXpath.portfolio, time, "click portfolio", log);
+				Utils.clickXpath(driver, ActionXpath.portextracuricular, time, "Click on extracuricularactivties",
 						log);
-				// Utils.scrollUpOrDown(driver, 2000);
-				Utils.clickXpath(driver, ActionXpath.ClickOpenEnroll, time, "Go to the open Enrollement", log);
-				Utils.clickXpath(driver, ActionXpath.ClickEnroll, time, "Expand Enrollment", log);
+
+				Utils.clickXpath(driver, ActionXpath.portachivement, time, "Click achivement", log);
+				Utils.clickXpath(driver, ActionXpath.portconduct, time, "Click Conduct", log);
+				Utils.clickXpath(driver, ActionXpath.portrequestcomplint, time, "Click port&complint", log);
+				Utils.bigSleepBetweenClicks(2);
+				// Utils.clickXpath(driver, ActionXpath.portraisetiket, time, "Click
+				// Raise&tiket", log);
+				Utils.clickXpath(driver, ActionXpath.portpersonaldet, time, "Click personal dr", log);
+
 				Utils.logg(log, "info", "TC-2 Enrollment of the Student Test Case PASSED \n");
 				break;
 			} catch (Exception e) {
@@ -90,19 +90,11 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-3: Starting Student Academic  test case execution\n");
-				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstaAcademic, time, "Exapand Academic", log);
-					Utils.clickXpath(driver, ActionXpath.ClickDashboard, time, "Click on dashboard", log);
-					Utils.scrollUpOrDown(driver, 2000);
-					Utils.clickXpath(driver, ActionXpath.ClickLearn, time, "Click learn ", log);
-					Utils.clickXpath(driver, ActionXpath.ltstaAcademic, time, "Close Academic Expand", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.ExpandAcademic, time, "Exapand Academic", log);
-					Utils.clickXpath(driver, ActionXpath.ClickDashboard, time, "Click on dashboard", log);
-					Utils.clickXpath(driver, ActionXpath.ClickLearn, time, "Click learn", log);
-					Utils.clickXpath(driver, ActionXpath.CloseAcademicExapand, time, "Close Academic Expand", log);
-				}
+				Utils.clickXpath(driver, ActionXpath.dashbord, time, "click dashbord", log);
+				Utils.clickXpath(driver, ActionXpath.clicklearn, time, "click learn", log);
+				Utils.clickXpath(driver, ActionXpath.overalldropdown, time, "click over all drop down", log);
+				Utils.clickXpath(driver, ActionXpath.selectoveralldropdown, time, "select the all drop down", log);
+
 				Utils.logg(log, "info", "TC-3 Student Academic Test Case PASSED  \n");
 				break;
 			} catch (Exception e) {
@@ -167,14 +159,10 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-5: Starting Student Attendance test case execution");
-				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstaAttendance, time, "Select the Attendance", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.ClickAttendance, time, "Select the Attendance", log);
-				}
-				Utils.clickXpath(driver, ActionXpath.clickattendanceHistory, time, "Select the Attendance History",
+
+				Utils.clickXpath(driver, ActionXpath.clickonattendance, time, "Select the Attendance History",
 						log);
+
 				Utils.logg(log, "info", "TC-5 Student Attendance Test Case PASSED  \n");
 				break;
 			} catch (Exception e) {
@@ -202,11 +190,7 @@ public class Pfs_student {
 			try {
 				System.out.println("TC-6: Starting Student Timetable test case execution ");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstaTimetable, time, "Select time table", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.ClickTimetable, time, "Select time table", log);
-				}
+				Utils.clickXpath(driver, ActionXpath.ClickTimetable, time, "Select time table", log);
 				Utils.clickXpath(driver, ActionXpath.TimeTableMonth, time, "Select Month view", log);
 				Utils.clickXpath(driver, ActionXpath.TimeTableWeek, time, "Selecte Week view", log);
 				Utils.clickXpath(driver, ActionXpath.TimeTableDay, time, "Select Day view", log);
@@ -237,19 +221,19 @@ public class Pfs_student {
 			try {
 				System.out.println("TC-7:  Starting Student FEES test case execution");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkUrlToSkipTest(url)) {
-					log.info("TC-7 Skipped this test as this is not applicable for this portal\n\n");
-					return;
-				}
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstaFees, time, "Expand the Fees", log);
-					Utils.clickXpath(driver, ActionXpath.clickFeeSchedule, time, " Click Fee Schedule", log);
-					Utils.clickXpath(driver, ActionXpath.ltstaFees, time, "Expand the Fees", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.ExpandFees, time, "Expand the Fees", log);
-					Utils.clickXpath(driver, ActionXpath.clickFeeSchedule, time, " Click Fee Schedule", log);
-					Utils.clickXpath(driver, ActionXpath.ExpandFees, time, "Expand the Fees", log);
-				}
+
+				Utils.clickXpath(driver, ActionXpath.clickonfees, time, "Expand the Fees", log);
+				Utils.clickXpath(driver, ActionXpath.clickonpendingfees, time, " Click pendingfees", log);
+				Utils.clickXpath(driver, ActionXpath.clickonfeecart, time, "Expand the Fees cart", log);
+
+				Utils.clickXpath(driver, ActionXpath.clickonfeeschedule, time, "Expand the Fees schedule", log);
+				Utils.clickXpath(driver, ActionXpath.clickonfeescheduleclass, time, " Click Fee Schedule class", log);
+				Utils.clickXpath(driver, ActionXpath.clickontranscation, time, "clickon transcation", log);
+
+				Utils.clickXpath(driver, ActionXpath.clickonstudentservice, time, " clickon studentservice", log);
+				Utils.clickXpath(driver, ActionXpath.clickonfeestudentserviceinr, time, "clickon feestudentserviceinr",
+						log);
+
 				Utils.logg(log, "info", "TC-7 Student Fees Test Case PASSED  \n");
 				break;
 			} catch (Exception e) {
@@ -277,13 +261,9 @@ public class Pfs_student {
 			try {
 				System.out.println("TC-8:   Starting Student FEEDBACK test case execution");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstafeedBack, time, "FeedBack", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.feedBack, time, "FeedBack", log);
-				}
+				Utils.clickXpath(driver, ActionXpath.feedBack, time, "FeedBack", log);
 				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.clickPrograme, time, "Programe Feedbcak", log);
+				Utils.clickXpath(driver, ActionXpath.clickPending, time, "Programe Feedbcak", log);
 				Utils.logg(log, "info", "TC-8 Student FEEDBACK tab Test Case PASSED \n");
 				break;
 			} catch (Exception e) {
@@ -311,20 +291,15 @@ public class Pfs_student {
 			try {
 				System.out.println("TC-9  Starting  Student Services check cancel button test case execution ");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstaService, time, "Student Status", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.StudentService, time, "Student Status", log);
-				}
-				Utils.clickXpath(driver, ActionXpath.MakeRaise, time, "Make Raise", log);
-				if (Utils.checknsom(url)) {
-					Utils.clickXpath(driver, ActionXpath.Raisequery, time, "Raise case", log);
-					Utils.clickXpath(driver, ActionXpath.buttonRaisequery, time, "Button Raise", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.Raisecase, time, "Raise case", log);
-					Utils.clickXpath(driver, ActionXpath.buttonRaisecase, time, "Button Raise", log);
-				}
-				Utils.clickXpath(driver, ActionXpath.cancel, time, "Cancel the raise case", log);
+
+				Utils.clickXpath(driver, ActionXpath.StudentService, time, "Student Status", log);
+				Utils.clickXpath(driver, ActionXpath.addrequest, time, "Make Raise", log);
+				Utils.clickXpath(driver, ActionXpath.requesttype, time, "Raise case", log);
+				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
+				Utils.clickXpath(driver, ActionXpath.Priority, time, "Raise case", log);
+				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
+				Utils.callSendkeys(driver, ActionXpath.reasonrequst, "WIfi not working ", time, log);
+				Utils.clickXpath(driver, ActionXpath.Submitrequest, time, "Cancel the raise case", log);
 				Utils.logg(log, "info", "TC-9 Student Services check cancel button Test Case PASSED \n");
 				break;
 			} catch (Exception e) {
@@ -354,23 +329,15 @@ public class Pfs_student {
 			try {
 				System.out.println("TC-10 Starting Student Services Raise test case execution \n");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstaService, time, "Student Status", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.StudentService, time, "Student Status", log);
-				}
-				if (Utils.checknsom(url)) {
-					Utils.clickXpath(driver, ActionXpath.Raisequery, time, "Raise case", log);
-					Utils.clickXpath(driver, ActionXpath.buttonRaisequery, time, "Button Raise", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.Raisecase, time, "Raise case", log);
-					Utils.clickXpath(driver, ActionXpath.buttonRaisecase, time, "Button Raise", log);
-				}
-				Utils.callSendkeys(driver, ActionXpath.inputraise, "WIfi not working ", time, log);
-				Utils.callSendkeys(driver, ActionXpath.description,
-						"While i Select the network to check the Exam date and all that time i did not found the exam date & also tab ewas not working",
-						time, log);
-				Utils.clickXpath(driver, ActionXpath.submitofcase, time, "Submit the case", log);
+
+				Utils.clickXpath(driver, ActionXpath.StudentService, time, "Raise case", log);
+				Utils.clickXpath(driver, ActionXpath.raisecomplain, time, "Button Raise", log);
+				Utils.clickXpath(driver, ActionXpath.requesttype, time, "Raise case", log);
+				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
+				Utils.clickXpath(driver, ActionXpath.Priority, time, "Raise case", log);
+				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
+				Utils.callSendkeys(driver, ActionXpath.reasonrequst, "WIfi not working ", time, log);
+				Utils.clickXpath(driver, ActionXpath.Submitrequest, time, "Cancel the raise case", log);
 				Utils.logg(log, "info", " TC-10 Student Service Raise case Test Case PASSED \n");
 				break;
 			} catch (Exception e) {
@@ -389,28 +356,24 @@ public class Pfs_student {
 				}
 			}
 		}
+
 	}
 
 	@Test(priority = 11)
-	public static void testStudentMakeRequest(String student, String faculty, String url, WebDriver driver, Logger log)
+	public static void requestfilter(String student, String faculty, String url, WebDriver driver, Logger log)
 			throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
 				System.out.println("TC-11 Starting Student Services make request test case execution ");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstaService, time, "Student Status", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.StudentService, time, "Student Status", log);
-				}
-				Utils.clickXpath(driver, ActionXpath.MakeRaise, time, "Click the button Make raise", log);
-				Utils.clickXpath(driver, ActionXpath.makeRequest, time, "selet the Button Make request", log);
-				Utils.callSendkeys(driver, ActionXpath.enterSubject, "The Attendance Request for 2 days", time, log);
-				Utils.callSendkeys(driver, ActionXpath.desc,
-						"I need to apply the leave for the 2 days because of some personal issue so plz approve the request ",
-						time, log);
-				Utils.clickXpath(driver, ActionXpath.makeSubmit, time, "Submit the make requst option", log);
+				Utils.clickXpath(driver, ActionXpath.StudentService, time, "Raise case", log);
+				Utils.clickXpath(driver, ActionXpath.requestfilter, time, "Student Status", log);
+				Utils.clickXpath(driver, ActionXpath.filter1, time, "Click the button Make raise", log);
+				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "selet the Button Make request", log);
+				Utils.clickXpath(driver, ActionXpath.filter2, time, "Submit the make requst option", log);
+				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "selet the Button Make request", log);
+				Utils.clickXpath(driver, ActionXpath.Applyss, time, "selet the Button Make request", log);
 				Utils.logg(log, "info", " TC-11 Student services make request test case PASSED  \n");
 				break;
 

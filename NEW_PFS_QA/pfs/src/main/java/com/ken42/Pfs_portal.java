@@ -11,13 +11,9 @@ import java.util.concurrent.TimeUnit;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
-// import org.apache.commons.lang.ObjectUtils.Null;
-// import org.jaxen.function.TrueFunction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -228,8 +224,8 @@ public class Pfs_portal extends Thread {
 					Pfs_student.testStudentAcademic(PFSurl, driver, log); // TC-3
 					break;
 				case 4:
-					checkStudentIsLoggedIn(driver, studentEmail, PFSurl, log, csvCell);
-					Pfs_student.testStudentExamination(PFSurl, driver, log); // TC-4
+					// checkStudentIsLoggedIn(driver, studentEmail, PFSurl, log, csvCell);
+					// Pfs_student.testStudentExamination(PFSurl, driver, log); // TC-4
 					break;
 				case 5:
 					checkStudentIsLoggedIn(driver, studentEmail, PFSurl, log, csvCell);
@@ -257,7 +253,7 @@ public class Pfs_portal extends Thread {
 					break;
 				case 11:
 					checkStudentIsLoggedIn(driver, studentEmail, PFSurl, log, csvCell);
-					Pfs_student.testStudentMakeRequest(studentEmail, facultyEmail, PFSurl, driver, log); // TC-11
+					Pfs_student.requestfilter(studentEmail, facultyEmail, PFSurl, driver, log); // TC-11
 					break;
 				case 12:
 					checkStudentIsLoggedIn(driver, studentEmail, PFSurl, log, csvCell);

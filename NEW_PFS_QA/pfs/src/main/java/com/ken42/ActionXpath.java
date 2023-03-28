@@ -63,13 +63,29 @@ public class ActionXpath {
    // Student Test case 5 Attendance Xpath ends here
 
    // Student Test case 6 TimeTable
-   static String ClickTimetable = "(//span[text()='Timetable'])[2]";
-   static String ltstaTimetable = "(//span[text()='Timetable'])[1]";
+   static String ClickTimetable = "(//*[text()='Time Table'])[1]";
+   static String ltstaTimetable = "(//*[text()='Time Table'])[1]";
    static String TimeTableMonth = "(//button[text()='month'])[1]";
    static String TimeTableWeek = "(//button[text()='week'])[1]";
    static String TimeTableDay = "(//button[text()='day'])[1]";
    // Student Portal Timetable Xpath ends here
+   // fees xpath
+   static String clickonfees = "//span[text()='Fees']";
+   static String clickonpendingfees = "//b[text()='Pending Fees in']/../../..//..//*[@role='button']";
 
+   static String clickonfeecart = "//span[text()='Fee Cart']";
+
+   static String clickonfeeschedule = "//span[text()='Fee Schedule']";
+   static String clickonfeescheduleclass = "//b[text()='2022-Class 6-ICSE']/../../..//..//*[@role='button']";
+
+   static String clickontranscation = "//span[text()='Transactions']";
+   static String clickonstudentservice = "//span[text()='Student Service Fee']";
+
+   static String clickonfeestudentserviceinr = "//b[text()='Student Service Fees INR ']/../../..//..//*[@role='button']";
+
+   // attendance xpath
+
+   static String clickonattendance = "//span[text()='Attendance']";
    // Student test case 7 Fees
    // static String ExpandFees="(//span[text()='Fees'])[2]";
    static String ExpandFees = "(//span[text()=' Fees']/../..//*[local-name()='svg'])[4]";
@@ -83,25 +99,31 @@ public class ActionXpath {
    // Student Test case 7 Portal Fees Xpath ends here
 
    // Student Test case 8 Feedback
-   static String feedBack = "(//span[. and text()='Feedback'])[2]";
+   static String feedBack = "(//span[. and text()='Feedback'])[1]";
    static String ltstafeedBack = "(//span[. and text()='Feedback'])[1]";
-   static String clickPrograme = "//span[. and text()='Program Feedback']";
+   static String clickPending = "(//*[. and text()='Pending'])[1]";
    // Student Portal Feedback Xpath ends here
 
    // Student Test case 9 Student service cancel button
    // static String StudentService="(//span[. and text()='Student Services'])[2]";
-   static String StudentService = "(//span[. and text()='Student Services'])[2] | (//span[. and text()='Support Services'])[2] | (//span[. and text()='Trainer Services'])[2]";
+   static String StudentService = "//*[. and text()='Support services']";
    static String ltstaService = "(//span[. and text()='Student Services'])[2] | (//span[. and text()='Support Services'])[2] | (//span[. and text()='Trainer Services'])[1]";
-   static String Raisecase = "(//p [. and text()='Raise A Case'])[1]";
-   static String Raisequery = "(//*[. and text()='Raise A Query'])[1]";
+   static String Priority = "(//*[@aria-haspopup='listbox'])[2]";
+   static String requesttype = "(//*[@aria-haspopup='listbox'])[1]";
 
-   static String MakeRaise = "(//p [. and text()='Make A Request'])[1]";
+   static String requestfilter = "(//*[@class='MuiButton-label'])[3]";
+   static String filter1 = "(//*[@id='mui-component-select-program'])[2]";
+   static String filter2 = "(//*[@id='mui-component-select-program'])[3]";
+
+   static String Applyss = "//*[text()='Apply']";
+   static String addrequest = "(//*[. and text()='Add your Request'])[1]";
    static String buttonRaisecase = "//button[@label='Raise Case']";
-   static String buttonRaisequery = "(//*[. and text()='Raise Query'])[1]";
-
+   static String selectdropdown = "(//*[@role='option'])[1]";
+   static String reasonrequst = "(//*[@id='fullWidth'])[1]";
+   static String Submitrequest = "(//*[text()='Submit'])[1]";
    static String cancel = "//button[@label='Cancel']";
    // Student Test case 9 ends here
-
+   static String raisecomplain = "(//*[. and text()='Raise a Complaint'])[2]";
    // Student Service Test case 10 Raise a case
    //// static String StudentService="(//span[. and text()='Student
    // Services'])[2]";
@@ -111,6 +133,29 @@ public class ActionXpath {
    static String description = "//textarea[@placeholder='Type your description here...']";
    static String submitofcase = "//button[@label='Submit']";
    // Student Service Test case 10 ends here
+   static String portfolio = "(//span[text()='My Portfolio'])/..";
+   static String portfolioacdemics = "(//*[text()='Academics'])[2]";
+   static String portextracuricular = "(//*[text()='Extra Curricular Activities'])";
+   static String portclub = "(//*[text()='Clubs'])[1]";
+   static String portfootball = "(//*[text()='FootBall'])[1]";
+   static String portother = "(//*[text()='Other'])[1]";
+   static String portachivement = "(//*[text()='Achievements'])[1]";
+   static String portconduct = "//*[text()='Conduct']";
+   static String portrequestcomplint = "(//*[text()='Request & Complaints'])[1]";
+   static String portraisetiket = "(//*[text()='Raise Ticket'])";
+   static String portaddrequest = "(//*[text()='Add your Request'])";
+   static String porttype = "(//*[@id='mui-component-select-Choose a category'])[1]/..//*[local-name()='svg']";
+   static String typeselect = "//li[text()='KARNATAKA']";
+   static String portprioty = "(//*[@id='mui-component-select-Choose a category'])[2]/..//*[local-name()='svg']";
+   static String priotyselect = "//li[text()='Top']";
+   static String resonadition = "//*[@id='fullWidth']";
+   static String portpersonaldet = "(//*[text()='Personal Details'])";
+   static String dashbord = "//*[text()='Dashboard']";
+   static String clicklearn = "(//*[text()='Learn'])[1]";
+   static String overalldropdown = "(//*[@aria-haspopup='listbox'])";
+   static String selectoveralldropdown = "//li[@aria-selected='true']";
+   static String portevent = "(//*[text()='Events'])[1]";
+   static String portfilter = "(//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text jss3297'])[1]";
 
    // Statudent Service Tets case 11 Make a request
    //// static String StudentService="(//span[. and text()='Student
