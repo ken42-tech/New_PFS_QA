@@ -114,6 +114,11 @@ public class ActionXpath {
    static String requestfilter = "(//*[@class='MuiButton-label'])[3]";
    static String filter1 = "(//*[@id='mui-component-select-program'])[2]";
    static String filter2 = "(//*[@id='mui-component-select-program'])[3]";
+   static String portevent = "(//*[text()='Events'])[1]";
+   static String portfilter = "(//*[@class='MuiButton-label'])[1]";
+   static String allcategary = "//*[@id='mui-component-select-category']";
+   static String selectallcategary = "//li[@aria-selected='true']";
+   static String cliclapply = "//*[text()='Apply']";
 
    static String Applyss = "//*[text()='Apply']";
    static String addrequest = "(//*[. and text()='Add your Request'])[1]";
@@ -154,8 +159,6 @@ public class ActionXpath {
    static String clicklearn = "(//*[text()='Learn'])[1]";
    static String overalldropdown = "(//*[@aria-haspopup='listbox'])";
    static String selectoveralldropdown = "//li[@aria-selected='true']";
-   static String portevent = "(//*[text()='Events'])[1]";
-   static String portfilter = "(//*[@class='MuiButtonBase-root MuiButton-root MuiButton-text jss3297'])[1]";
 
    // Statudent Service Tets case 11 Make a request
    //// static String StudentService="(//span[. and text()='Student

@@ -403,15 +403,12 @@ public class Pfs_student {
 			try {
 				System.out.println("TC-12  Starting Student Event case Execution ");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.ltstaEvent, time, "Event", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.Event, time, "Event", log);
-				}
-				Utils.smallSleepBetweenClicks(2);
-				// Utils.clickXpath(driver, ActionXpath.clcikEvent, time, "Open Event", log);
-				// Utils.clickXpath(driver, ActionXpath.back, time, "Go back", log);
-
+				Utils.goBackToHome(driver, url, log);
+				Utils.clickXpath(driver, ActionXpath.portevent, time, "click event", log);
+				Utils.clickXpath(driver, ActionXpath.portfilter, time, "click filter", log);
+				Utils.clickXpath(driver, ActionXpath.allcategary, time, "click all categaroy", log);
+				Utils.clickXpath(driver, ActionXpath.selectallcategary, time, "click select categary", log);
+				Utils.clickXpath(driver, ActionXpath.cliclapply, time, "click apply button", log);
 				Utils.logg(log, "info", "TC-12 Student EVENT Test Case PASSED\n");
 				break;
 			} catch (Exception e) {
