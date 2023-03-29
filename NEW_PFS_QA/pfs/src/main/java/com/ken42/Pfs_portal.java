@@ -791,23 +791,45 @@ public class Pfs_portal extends Thread {
 			Document doc = Jsoup.parse(inputFile, "UTF-8");
 			String regex = "(?i).*\\b(Passed|Failed|Skipped)\\b.*";
 			StringBuilder htmlBuilder = new StringBuilder();
+
 			htmlBuilder.append("<table border=\"1\">");
 			htmlBuilder.append(
-					"<tr><th>S.No.</th><th>Test Case Name</th><th>Status</th><th>Execution time/Seconds</th></tr>");
-			int count = 1;
+					"<tr><th>URL</th><th>Total Tests</th><th>PASSED</th><th>Skipped</th><th>FAILED</th></tr>");
 			String url = "";
-
 			int passedCount = 0;
 			int skippedCount = 0;
 			int failedCount = 0;
-			SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss", Locale.ENGLISH);
-			Date prevTime = null;
 			for (Element element : doc.getAllElements()) {
 				if (element.ownText().contains("Testing for Portal")) {
 					url = element.ownText().substring(element.ownText().indexOf("https"));
 					break;
 				}
 			}
+			for (Element element : doc.getAllElements()) {
+				if (element.ownText().matches(regex)) {
+					if (element.ownText().contains("PASSED")) {
+						passedCount++;
+					} else if (element.ownText().contains("FAILED")) {
+						failedCount++;
+					} else if (element.ownText().contains("Skipped ")) {
+						skippedCount++;
+					}
+				}
+			}
+			htmlBuilder.append("<tr><td>").append(url).append("</td><td>")
+					.append(passedCount + skippedCount + failedCount).append("</td><td>").append(passedCount)
+					.append("</td><td>").append(skippedCount).append("</td><td>").append(failedCount)
+					.append("</td></tr>");
+			htmlBuilder.append("</table>");
+
+			htmlBuilder.append("<br>");
+			htmlBuilder.append("<br>");
+			htmlBuilder.append("<table border=\"1\">");
+			htmlBuilder.append(
+					"<tr><th>S.No.</th><th>Test Case Name</th><th>Status</th><th>Execution time/Seconds</th></tr>");
+			int count = 1;
+			SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss", Locale.ENGLISH);
+			Date prevTime = null;
 			for (Element element : doc.getAllElements()) {
 				if (element.ownText().matches(regex)) {
 					String testCase = "";
@@ -822,24 +844,20 @@ public class Pfs_portal extends Thread {
 					}
 					if (element.ownText().contains("PASSED")) {
 						status = "PASSED";
-						passedCount++;
 						htmlBuilder.append("<tr style=\"background-color: #00FF00;\">");
 					} else if (element.ownText().contains("FAILED")) {
 						status = "FAILED";
-						failedCount++;
 						htmlBuilder.append("<tr style=\"background-color: #FF0000;\">");
 					} else if (element.ownText().contains("Skipped ")) {
 						status = "Skipped ";
-						skippedCount++;
 						htmlBuilder.append("<tr style=\"background-color: #FFFF00;\">");
 					} else {
-						continue; // ignore lines without any status
+						continue;
 					}
 					testCase = testCase.replaceAll("Test Case PASSED", "").replaceAll("Test Case FAILED", "")
 							.replaceAll("test case PASSED", "").replaceAll("and Test Case PASSED", "");
 					htmlBuilder.append("<td>").append(count).append("</td><td>").append(testCase).append("</td>")
-							.append("</td>").append("<td>").append(status)
-							.append("</td>");
+							.append("<td>").append(status).append("</td>");
 
 					// Extract time difference between rows
 					Element timeCell = element.parent().select("td:eq(1)").first();
@@ -850,22 +868,10 @@ public class Pfs_portal extends Thread {
 						htmlBuilder.append("<td>").append(diffSeconds).append("</td>");
 					}
 					prevTime = currTime;
-
 					htmlBuilder.append("</tr>");
 					count++;
 				}
 			}
-			htmlBuilder.append("</table>");
-			htmlBuilder.append("<br>");
-			htmlBuilder.append("<br>");
-			htmlBuilder.append("<table border=\"1\">");
-			htmlBuilder.append(
-					"<tr><th>URL</th><th>Total Tests</th><th>PASSED</th><th>Skipped</th><th>FAILED</th></tr>");
-			htmlBuilder.append("<tr><td>").append(url).append("</td><td>")
-					.append(passedCount + skippedCount + failedCount).append("</td><td>").append(passedCount)
-					.append("</td><td>").append(skippedCount).append("</td><td>").append(failedCount)
-					.append("</td></tr>");
-			htmlBuilder.append("</table>");
 
 			String folder = "";
 			folder = Pfs_portal.getFolderPath();
