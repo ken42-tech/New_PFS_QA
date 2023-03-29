@@ -668,8 +668,8 @@ public class Pfs_portal extends Thread {
 		}
 		quitDriver(driver, PFSurl);
 		Utils.logg(log, "info", "***************** COMPLETED TESTTING OF PORTAL" + PFSurl);
-		ResultSummary(logFileName);
-		SendMail.sendEmail(logFileName);
+		String result = ResultSummary(logFileName);
+		SendMail.sendEmail(logFileName, result);
 	}
 
 	@BeforeSuite
@@ -783,7 +783,7 @@ public class Pfs_portal extends Thread {
 		return false;
 	}
 
-	public static void ResultSummary(String logFileName) throws java.lang.Exception {
+	public static String ResultSummary(String logFileName) throws java.lang.Exception {
 
 		try {
 
@@ -877,18 +877,20 @@ public class Pfs_portal extends Thread {
 				System.out.println(output);
 			}
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-			logFileName = String.format(folder + "\\" + output + "_%s.HTML", timeStamp);
-			FileWriter writer = new FileWriter(logFileName);
+			String ResultSummary = String.format(folder + "\\" + output + "_%s.HTML", timeStamp);
+			FileWriter writer = new FileWriter(ResultSummary);
 			writer.write(htmlBuilder.toString());
 			writer.close();
 
 			System.out.println("Text extracted and written in table to file successfully");
-
+			return ResultSummary;
 		} catch (
 
 		IOException e) {
 			e.printStackTrace();
 		}
+		return logFileName;
+
 	}
 
 }

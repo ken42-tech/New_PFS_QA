@@ -23,7 +23,8 @@ import com.opencsv.exceptions.CsvValidationException;
 
 public class SendMail {
 
-    public static void sendEmail(String logFileName) throws CsvValidationException, IOException {
+    public static void sendEmail(String logFileName, String ResultSummary)
+            throws CsvValidationException, IOException {
         String CSV_PATH = "C:\\Users\\Public\\Documents\\email.csv";
         CSVReader csvReader;
         String[] csvCell;
@@ -39,7 +40,7 @@ public class SendMail {
         }
         System.out.println("EMail list is ***********" + emailTo);
         // Sender's email ID needs to be mentioned
-        String from = "anandtest2002@gmail.com";
+        String from = "test21.ken42@gmail.com";
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.gmail.com";
         // Get system properties
@@ -50,13 +51,13 @@ public class SendMail {
         properties.put("mail.smtp.ssl.enable", "true");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.user", "anandtest2002@gmail.com");
-        properties.put("mail.smtp.password", "vrczwxfjfbqdylfq");
+        properties.put("mail.smtp.user", "test21.ken42@gmail.com");
+        properties.put("mail.smtp.password", "mgsybrhigonlesvv");
 
         // Get the Session object.// and pass username and password
         Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("anandtest2002@gmail.com", "vrczwxfjfbqdylfq");
+                return new PasswordAuthentication("test21.ken42@gmail.com", "mgsybrhigonlesvv");
             }
         });
         // Used to debug SMTP issues
@@ -93,6 +94,14 @@ public class SendMail {
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName(logFileName);
             multipart.addBodyPart(messageBodyPart);
+
+            // Part three is another attachment
+            messageBodyPart = new MimeBodyPart();
+            DataSource source2 = new FileDataSource(ResultSummary);
+            messageBodyPart.setDataHandler(new DataHandler(source2));
+            messageBodyPart.setFileName(ResultSummary);
+            multipart.addBodyPart(messageBodyPart);
+
             // Send the complete message parts
             message.setContent(multipart);
             Transport.send(message);

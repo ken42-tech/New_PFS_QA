@@ -19,20 +19,10 @@ public class Pfs_student {
 	public static void testStudent(String url, WebDriver driver, Logger log) throws Exception {
 		try {
 			System.out.println(" TC-1:  Student Starting Home tab  case execution");
-			// Utils.bigSleepBetweenClicks(1);
-			// Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "Click on Login
-			// initial", log);
-			// Check if Attendance, Assessments, Schedule are present in home tab.
 			WebElement l = driver.findElement(By.tagName("body"));
 			String p = l.getText();
-			if (p.contains("XXXXX") && p.contains("Assessments")
-					&& p.contains("Timetable") && p.contains("Schedule") && p.contains("MY SUBJECTS")) {
-				Utils.logg(log, "info", "TC-1: Student Home tab test case PASSED \n\n");
-			} else {
-				log.warning(" TC-1 Student Home tab test case FAILED it does not contain all the tabs\n\n");
-			}
-			if (p.contains("Attendance") && p.contains("Assessments")
-					&& p.contains("Timetable") && p.contains("Schedule") && p.contains("MY SUBJECTS")) {
+			if (p.contains("My Subjects") && p.contains("My Schedule")
+					&& p.contains("Activities1")) {
 				Utils.logg(log, "info", "TC-1 Student Home tab test case PASSED \n\n");
 			} else {
 				log.warning(" TC-1 Student Home tab test case FAILED it does not contain all the tabs\n\n");
@@ -451,7 +441,7 @@ public class Pfs_student {
 				Utils.clickXpath(driver, ActionXpath.kerconduct, time, "Click on Save", log);
 				Utils.clickXpath(driver, ActionXpath.kerrequestcomplint, time, "Click on Save", log);
 				Utils.bigSleepBetweenClicks(1);
-				Utils.logg(log, "info", "  TC-13: Student profile test case PASSED  \n");
+				Utils.logg(log, "info", "  TC-13 Student profile test case PASSED  \n");
 
 				break;
 			} catch (Exception e) {
