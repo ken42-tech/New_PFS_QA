@@ -431,6 +431,7 @@ public class Pfs_student {
 				Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "Click on Initial icon", log);
 				Utils.smallSleepBetweenClicks(1);
 				Utils.clickXpath(driver, ActionXpath.kerprofile, time, "Click on profile button", log);
+				driver.navigate().refresh();
 				Utils.smallSleepBetweenClicks(1);
 				Utils.clickXpath(driver, ActionXpath.kerextracuricular, time, "Click on edit SVG", log);
 				Utils.clickXpath(driver, ActionXpath.kerfolioacdemics, time, "Click on Save", log);
@@ -441,7 +442,7 @@ public class Pfs_student {
 				Utils.clickXpath(driver, ActionXpath.kerconduct, time, "Click on Save", log);
 				Utils.clickXpath(driver, ActionXpath.kerrequestcomplint, time, "Click on Save", log);
 				Utils.bigSleepBetweenClicks(1);
-				Utils.logg(log, "info", "  TC-13 Student profile test case PASSED  \n");
+				Utils.logg(log, "info", "  TC-13 Student profile test case PASSED  \n");
 
 				break;
 			} catch (Exception e) {
@@ -473,7 +474,8 @@ public class Pfs_student {
 				Utils.bigSleepBetweenClicks(1);
 				Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "Click on profile Icon", log);
 				Utils.clickXpath(driver, ActionXpath.kerprofile, time, "Click on profile button", log);
-				Utils.smallSleepBetweenClicks(1);
+				driver.navigate().refresh();
+				Utils.bigSleepBetweenClicks(1);
 				Utils.clickXpath(driver, ActionXpath.keroersonaldetails, time, "Click on education", log);
 				Utils.clickXpath(driver, ActionXpath.kereditdetail, time, "CLick on edit SVG", log);
 				Utils.callSendkeys(driver, ActionXpath.kermiddlename, "test", time, log);
@@ -483,7 +485,6 @@ public class Pfs_student {
 				Utils.clickXpath(driver, ActionXpath.kersubmit, time, "CLick on edit SVG", log);
 
 				Utils.logg(log, "info", " TC-14 Student profile edit  test case PASSED \n");
-
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -509,45 +510,21 @@ public class Pfs_student {
 		int RetryCount = 0;
 		while (true) {
 			try {
-				if (Utils.stueditprofil(url)) {
-					log.info(
-							"TC-15 Student Education Deatil Skipped this test as this is not applicable for this portal\n\n");
 
-					return;
-				} else {
-					if (Utils.checkltpct(url)) {
-						Utils.logg(log, "info", " TC-15 Student Address Edit is not supported on this portal\n");
-						return;
-					}
-					System.out.println(" TC-15 Starting student prfofile edit Address test case execution");
+				System.out.println(" TC-15 Starting student prfofile edit Address test case execution");
 
-					Utils.goBackToHome(driver, url, log);
-					Utils.bigSleepBetweenClicks(1);
-					Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "profile", log);
-					Utils.clickXpath(driver, ActionXpath.stuprofile, time, "stuprofile", log);
-					Utils.smallSleepBetweenClicks(1);
-					// if (Utils.checkLtsta(url)) {
-					// driver.findElement(By.xpath(ActionXpath.stuprofile)).sendKeys(Keys.TAB);
-					// }
-					JavascriptExecutor js14 = (JavascriptExecutor) driver;
-					js14.executeScript("window.scrollBy(0,2500)");
-					Utils.bigSleepBetweenClicks(1);
-					Utils.clickXpath(driver, ActionXpath.stuadddrop, time, "stuadddrop", log);
-					Utils.vsmallSleepBetweenClicks(1);
-					Utils.clickXpath(driver, ActionXpath.stuedit, time, "stuedit", log);
-					Utils.clickXpath(driver, ActionXpath.stuaddadd, time, "stuaddadd", log);
-					Utils.callSendkeys(driver, ActionXpath.stuhouse, "SAMPLE", time, log);
-					Utils.callSendkeys(driver, ActionXpath.sturoad, "SAMPLE", time, log);
-					Utils.callSendkeys(driver, ActionXpath.stusuburb, "SAMPLE", time, log);
-					Utils.callSendkeys(driver, ActionXpath.stucountry, "India", time, log);
-					Utils.callSendkeys(driver, ActionXpath.stupincode, "600001", time, log);
-					Utils.smallSleepBetweenClicks(1);
-					Utils.clickXpath(driver, ActionXpath.stusave, time, "stusave", log);
-					Utils.smallSleepBetweenClicks(1);
-					Utils.bigSleepBetweenClicks(1);
-					Utils.logg(log, "info", "  TC-15 Student profile edit address detail test case PASSED\n");
+				Utils.goBackToHome(driver, url, log);
+				Utils.bigSleepBetweenClicks(1);
+				Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "profile", log);
+				Utils.clickXpath(driver, ActionXpath.kerprofile, time, "stuprofile", log);
+				Utils.smallSleepBetweenClicks(1);
+				Utils.clickXpath(driver, ActionXpath.editimage, time, "stuaddadd", log);
+				driver.navigate().refresh();
 
-				}
+				Utils.smallSleepBetweenClicks(1);
+				Utils.bigSleepBetweenClicks(1);
+				Utils.logg(log, "info", "  TC-15 Student profile edit address detail test case PASSED\n");
+
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -567,6 +544,7 @@ public class Pfs_student {
 				}
 			}
 		}
+
 	}
 
 	@Test(priority = 16)

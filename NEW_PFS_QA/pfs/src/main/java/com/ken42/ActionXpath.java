@@ -117,9 +117,10 @@ public class ActionXpath {
    static String portevent = "(//*[text()='Events'])[1]";
    static String portfilter = "(//*[@class='MuiButton-label'])[1]";
    static String allcategary = "//*[@id='mui-component-select-category']";
-   static String selectallcategary = "//li[@aria-selected='true']";
+   // static String selectallcategary = "//li[@aria-selected='true']";
    static String cliclapply = "//*[text()='Apply']";
-
+   static String cancelimage = "//*[@class='MuiSvgIcon-root jss5369 MuiSvgIcon-fontSizeSmall']";
+   static String editimage = "//*[text()='Edit Profile Image']";
    static String Applyss = "//*[text()='Apply']";
    static String addrequest = "(//*[. and text()='Add your Request'])[1]";
    static String buttonRaisecase = "//button[@label='Raise Case']";
@@ -193,6 +194,7 @@ public class ActionXpath {
    static String Stubasicgender = "//*[@id=\"mui-component-select-Gender\"]";
    static String Gender = "Female";
    static String stubasicgenderselect = "//li[@data-value='Female']";
+   static String selectallcategary = "//*[@role='listbox']";
    static String stubasicdob = "//*[@name='BirthDate']";
    static String stubasicnation = "//*[@name='CountryOfResidence']";
    static String stubasicsave = "//*[text()='Save']";
