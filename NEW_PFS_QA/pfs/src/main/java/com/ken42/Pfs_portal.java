@@ -261,11 +261,11 @@ public class Pfs_portal extends Thread {
 					break;
 				case 13:
 					checkStudentIsLoggedIn(driver, studentEmail, PFSurl, log, csvCell);
-					Pfs_student.testStudentEditProfile(PFSurl, driver, log); // TC-13
+					Pfs_student.testStudentProfile(PFSurl, driver, log); // TC-13
 					break;
 				case 14:
 					checkStudentIsLoggedIn(driver, studentEmail, PFSurl, log, csvCell);
-					Pfs_student.testStudentEditEducationDetails(PFSurl, driver, log); // TC-14
+					Pfs_student.testStudentEditProfile(PFSurl, driver, log); // TC-14
 					break;
 				case 15:
 					checkStudentIsLoggedIn(driver, studentEmail, PFSurl, log, csvCell);

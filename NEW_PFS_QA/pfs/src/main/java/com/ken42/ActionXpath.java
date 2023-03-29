@@ -139,14 +139,7 @@ public class ActionXpath {
    static String submitofcase = "//button[@label='Submit']";
    // Student Service Test case 10 ends here
    static String portfolio = "(//span[text()='My Portfolio'])/..";
-   static String portfolioacdemics = "(//*[text()='Academics'])[2]";
-   static String portextracuricular = "(//*[text()='Extra Curricular Activities'])";
-   static String portclub = "(//*[text()='Clubs'])[1]";
-   static String portfootball = "(//*[text()='FootBall'])[1]";
-   static String portother = "(//*[text()='Other'])[1]";
-   static String portachivement = "(//*[text()='Achievements'])[1]";
-   static String portconduct = "//*[text()='Conduct']";
-   static String portrequestcomplint = "(//*[text()='Request & Complaints'])[1]";
+
    static String portraisetiket = "(//*[text()='Raise Ticket'])";
    static String portaddrequest = "(//*[text()='Add your Request'])";
    static String porttype = "(//*[@id='mui-component-select-Choose a category'])[1]/..//*[local-name()='svg']";
@@ -178,6 +171,22 @@ public class ActionXpath {
    // Student Test case Feedback ends here
 
    /// Student Test case 13 edit Profile Xpath
+   static String kerprofile = "//*[text()='Profile']";
+   static String kerextracuricular = "(//*[text()='Extra Curricular Activities'])";
+   static String kerfolioacdemics = "(//*[text()='Academics'])[2]";
+   static String kerclub = "(//*[text()='Clubs'])[1]";
+   static String kerfootball = "(//*[text()='FootBall'])[1]";
+   static String kerother = "(//*[text()='Other'])[1]";
+   static String kerachivement = "(//*[text()='Achievements'])[1]";
+   static String kerconduct = "//*[text()='Conduct']";
+   static String kerrequestcomplint = "(//*[text()='Request & Complaints'])[1]";
+   static String keroersonaldetails = "(//*[text()='Personal Details'])";
+   static String kereditdetail = "(//*[text()='Edit Details'])";
+   static String kermiddlename = "(//*[@name='middleName'])";
+   static String kergender = "(//*[@name='gender'])";
+   static String kerselcetgender = "(//*[@value='Male'])";
+   static String kerbirthplace = "(//*[@name='birthPlace'])";
+   static String kersubmit = "(//*[text()='Submit'])";
    //// static String Stu_prName = "(//span[@class='MuiIconButton-label'])[3]";
    static String stuprofile = "//*[. and text()='Profile']/..";
    static String stubasicedit = "(//*[name()='svg'and@height='23'])[1]";
