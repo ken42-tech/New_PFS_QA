@@ -464,7 +464,7 @@ public class Utils {
 
 	@Test
 	public static Boolean otplogin(String url) {
-		String urlToMatch = "portal-demo|bimtech|jdinstitutedelhi|portal-dev1|ltsta|portal-dev|ecampus|nsom|kernel";
+		String urlToMatch = "portal-demo|bimtech|jdinstitutedelhi|portal-dev1|ltsta|portal-dev|ecampus|nsom|kernel|sp-jain";
 		Pattern pt = Pattern.compile(urlToMatch);
 		Matcher m = pt.matcher(url);
 		while (m.find()) {

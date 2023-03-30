@@ -123,7 +123,7 @@ public class Pfs_portal extends Thread {
 		Utils.smallSleepBetweenClicks(2);
 
 		boolean signInPresent = false;
-		signInPresent = driver.findElements(By.xpath("//*[text()='Sign in']")).size() > 0;
+		signInPresent = driver.findElements(By.xpath("//*[text()='Sign in'] | //*[text()='SIGN IN']")).size() > 0;
 		if (signInPresent) {
 			Utils.goBackToHome(driver, PFSurl, log);
 			Utils.logg(log, "info_d", " Hey Student not logged in let's login with ID" + studentEmail);
