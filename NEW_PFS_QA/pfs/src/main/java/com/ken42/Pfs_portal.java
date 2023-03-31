@@ -144,7 +144,7 @@ public class Pfs_portal extends Thread {
 		Utils.smallSleepBetweenClicks(2);
 
 		boolean signInPresent = false;
-		signInPresent = driver.findElements(By.xpath("//*[text()='Sign in']")).size() > 0;
+		signInPresent = driver.findElements(By.xpath("//*[text()='Sign in']| //*[text()='SIGN IN']")).size() > 0;
 		if (signInPresent) {
 			Utils.goBackToHome(driver, PFSurl, log);
 			Utils.logg(log, "info_d", "Hey Faculty not logged in let's login with ID " + facultyEmail);
@@ -281,11 +281,11 @@ public class Pfs_portal extends Thread {
 					break;
 				case 18:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyQuestionBank(PFSurl, driver, log); // TC-18
+					Pfs_faculty.testFacultymy360(PFSurl, driver, log); // TC-18
 					break;
 				case 19:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyCourseContent(PFSurl, driver, log); // TC-19
+					Pfs_faculty.testFacultyteachattendence(PFSurl, driver, log); // TC-19
 					break;
 				case 20:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
@@ -301,53 +301,53 @@ public class Pfs_portal extends Thread {
 					break;
 				case 23:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFaculityTimetable(PFSurl, driver, log); // TC-23
+					Pfs_faculty.testFaculityCalender(PFSurl, driver, log); // TC-23
 					break;
 				case 24:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyService(PFSurl, driver, log); // TC-24
+					Pfs_faculty.testFacultyEvents(PFSurl, driver, log); // TC-24
 					break;
 				case 25:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyRaiseCase(studentEmail, facultyEmail, PFSurl, driver, log); // TC-25
+					Pfs_faculty.testFacultyfeedback(studentEmail, facultyEmail, PFSurl, driver, log); // TC-25
 					break;
 				case 26:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyMakeRequest(studentEmail, facultyEmail, PFSurl, driver, log); // TC-26
+					Pfs_faculty.testFacultyresources(studentEmail, facultyEmail, PFSurl, driver, log); // TC-26
 					break;
 				case 27:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyEvent(PFSurl, driver, log); // TC-27
+					Pfs_faculty.testFacultyDocumentflow(PFSurl, driver, log); // TC-27
 					break;
 				case 28:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testfacultyEditProfile(studentEmail, facultyEmail, PFSurl,
+					Pfs_faculty.testfacultyContactflowConfirm(studentEmail, facultyEmail, PFSurl,
 							driver, log); // TC-28
 					break;
 				case 29:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testfacultyEditAddress(studentEmail, facultyEmail, PFSurl,
+					Pfs_faculty.testfacultyContactflowreject(studentEmail, facultyEmail, PFSurl,
 							driver, log); // TC-29
 					break;
 				case 30:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testfacultyEditAcademicDetails(studentEmail, facultyEmail,
+					Pfs_faculty.testfacultyEditprofile(studentEmail, facultyEmail,
 							PFSurl, driver, log); // TC-30
 					break;
 				case 31:
 					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testfacultyEditEXPERIENCE(studentEmail, facultyEmail,
+					Pfs_faculty.testfacultyEditprofileimage(studentEmail, facultyEmail,
 							PFSurl, driver, log); // TC-31
 					break;
 				case 32:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testfacultyEditRESEARCHPublication(studentEmail, facultyEmail,
-							PFSurl, driver, log); // TC-32
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testfacultyEditRESEARCHPublication(studentEmail, facultyEmail,
+					// PFSurl, driver, log); // TC-32
 					break;
 				case 33:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testfacultyEditOTHERS(studentEmail, facultyEmail, PFSurl,
-							driver, log); // TC-33
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testfacultyEditOTHERS(studentEmail, facultyEmail, PFSurl,
+					// driver, log); // TC-33
 					break;
 				case 34:
 					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log,csvCell);
@@ -365,48 +365,54 @@ public class Pfs_portal extends Thread {
 					// log); // TC-36
 					break;
 				case 37:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyDashboard(studentEmail, facultyEmail, PFSurl, driver, log); // TC-37
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultyDashboard(studentEmail, facultyEmail, PFSurl, driver,
+					// log); // TC-37
 					break;
 				case 38:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyQuestionPaper(studentEmail, facultyEmail, PFSurl, driver, log); // TC-38
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultyQuestionPaper(studentEmail, facultyEmail, PFSurl,
+					// driver, log); // TC-38
 					break;
 				case 39:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyQuestiontrueORfalse(PFSurl, driver, log);
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultyQuestiontrueORfalse(PFSurl, driver, log);
 					break;
 				case 40:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyQuestionshortanswer(PFSurl, driver, log);
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultyQuestionshortanswer(PFSurl, driver, log);
 					break;
 				case 41:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyQuestionEssay(PFSurl, driver, log);
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultyQuestionEssay(PFSurl, driver, log);
 					break;
 				case 42:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testaddmorequestion(studentName, facultyEmail, PFSurl, driver, log);
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testaddmorequestion(studentName, facultyEmail, PFSurl, driver,
+					// log);
 					break;
 				case 43:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultySignout(PFSurl, driver, log); // TC-39
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultySignout(PFSurl, driver, log); // TC-39
 					break;
 				case 44:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultyEventFilter(PFSurl, driver, log); // TC-70
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultyEventFilter(PFSurl, driver, log); // TC-70
 					break;
 				case 45:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultymystudentprofileadmissiondetails(PFSurl, driver, log); // TC-84
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultymystudentprofileadmissiondetails(PFSurl, driver, log);
+					// // TC-84
 					break;
 				case 46:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultymystudentprofilepresonaldetails(PFSurl, driver, log); // TC-85
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultymystudentprofilepresonaldetails(PFSurl, driver, log);
+					// // TC-85
 					break;
 				case 47:
-					checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
-					Pfs_faculty.testFacultymystudentprofileaddresdetails(PFSurl, driver, log); // TC-86
+					// checkFacultyIsLoggedIn(driver, facultyEmail, PFSurl, log, csvCell);
+					// Pfs_faculty.testFacultymystudentprofileaddresdetails(PFSurl, driver, log); //
+					// TC-86
 					break;
 				case 48:
 					Pfs_resource.testSpreadsheetCreateViewDelete(studentEmail,
@@ -789,7 +795,7 @@ public class Pfs_portal extends Thread {
 
 			File inputFile = new File(logFileName);
 			Document doc = Jsoup.parse(inputFile, "UTF-8");
-			String regex = "(?i).*\\b(Passed|Failed|Skipped)\\b.*";
+			String regex = "(?i).*\\b(https|Passed|Failed|Skipped)\\b.*";
 			StringBuilder htmlBuilder = new StringBuilder();
 
 			htmlBuilder.append("<table border=\"1\">");
@@ -829,7 +835,7 @@ public class Pfs_portal extends Thread {
 					"<tr><th>S.No.</th><th>Test Case Name</th><th>Status</th><th>Execution time/Seconds</th></tr>");
 			int count = 1;
 			SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd,yyyy HH:mm:ss", Locale.ENGLISH);
-			Date prevTime = null;
+			long prevTime = 0L;
 			for (Element element : doc.getAllElements()) {
 				if (element.ownText().matches(regex)) {
 					String testCase = "";
@@ -863,11 +869,11 @@ public class Pfs_portal extends Thread {
 					Element timeCell = element.parent().select("td:eq(1)").first();
 					String timestamp = timeCell.text();
 					Date currTime = dateFormat.parse(timestamp);
-					if (prevTime != null) {
-						long diffSeconds = (currTime.getTime() - prevTime.getTime()) / 1000;
+					if (prevTime != 0L) { // don't calculate difference for first row
+						long diffSeconds = (currTime.getTime() - prevTime) / 1000;
 						htmlBuilder.append("<td>").append(diffSeconds).append("</td>");
 					}
-					prevTime = currTime;
+					prevTime = currTime.getTime();
 					htmlBuilder.append("</tr>");
 					count++;
 				}

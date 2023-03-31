@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -130,25 +131,17 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 18)
-	public static void testFacultyQuestionBank(String url, WebDriver driver, Logger log) throws Exception {
+	public static void testFacultymy360(String url, WebDriver driver, Logger log) throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
-				System.out.println(" TC-18  Faculty Starting QuestionBank Tab test case Executation");
+				System.out.println(" TC-18  Faculty Starting my360 Tab test case Executation");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.facClickacademicsltsta, time, "open the span on Academics",
-							log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.openFacdevnosbm, time, "open the acadmics for nsom & bmtech",
-							log);
-				}
-				Utils.clickXpath(driver, ActionXpath.facqb, time, "click  the Question bank", log);
-				Utils.bigSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.facaddque, time, "clcik on the add Question manualy", log);
-				Utils.bigSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.facqueback, time, "go back", log);
-				Utils.logg(log, "info", "TC-18 Faculty QuestionBank click BACK button Test Case PASSED\n");
+				Utils.clickXpath(driver, ActionXpath.my360, time, "open my360", log);
+				Utils.clickXpath(driver, ActionXpath.mypath, time, "open mypath", log);
+				Utils.clickXpath(driver, ActionXpath.Achivement, time, "open Achivement", log);
+				Utils.clickXpath(driver, ActionXpath.sppersonaldetails, time, "open personaldetails", log);
+				Utils.logg(log, "info", "TC-18 Faculty QuestionBank click Test Case PASSED\n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -156,7 +149,7 @@ public class Pfs_faculty {
 					Utils.printException(e);
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
-					Utils.logg(log, "warn", "TC-18 Faculty QuestionBank click BACK button Test Case FAILED \n");
+					Utils.logg(log, "warn", "TC-18 Faculty my360 click Test Case FAILED \n");
 					break;
 				} else {
 					RetryCount++;
@@ -170,30 +163,20 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 19)
-	public static void testFacultyCourseContent(String url, WebDriver driver, Logger log) throws Exception {
+	public static void testFacultyteachattendence(String url, WebDriver driver, Logger log) throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
 				Utils.goBackToHome(driver, url, log);
-				System.out.println("TC-19 Faculty Course Content Test Execution  Started ");
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.facClickacademicsltsta, time,
-							"open academics sapn on the ltsta",
-							log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.openFacltsta, time, "open span on acadmics on the ltsta", log);
-				}
-				Utils.clickXpath(driver, ActionXpath.faccc, time, "click on the Course content", log);
-				Utils.clickXpath(driver, ActionXpath.facccactivity, time, "clck on activity button ", log);
-				Utils.clickXpath(driver, ActionXpath.facassessmentrelative, time,
-						"select the activity option named was fourm", log);
-				Utils.clickXpath(driver, ActionXpath.facaddactivityrelative, time, "click to add fourm", log);
-				Utils.clickXpath(driver, ActionXpath.facccAsscancel, time, "cancel it ", log);
-				Utils.clickXpath(driver, ActionXpath.faccAssYes, time, "confirm to cancel", log);
-				Utils.clickXpath(driver, ActionXpath.faccc, time, "click on the course content", log);
-				Utils.clickXpath(driver, ActionXpath.FaccClickResource, time, "Click Resource", log);
-				Utils.clickXpath(driver, ActionXpath.facrescancel, time, "cancel the resources", log);
-				log.info("TC-19  Faculty Course Content Test PASSED \n");
+				System.out.println("TC-19 Faculty teach and attendence Test Execution  Started ");
+				Utils.clickXpath(driver, ActionXpath.teach, time, "open teach", log);
+				ArrayList<String> newTb = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(newTb.get(0));
+				Utils.clickXpath(driver, ActionXpath.Attendence, time, "open Attendence", log);
+				Utils.clickXpath(driver, ActionXpath.markattendence, time, "open markattendence", log);
+				Utils.clickXpath(driver, ActionXpath.Attendencehistory, time, "open Attendencehistory", log);
+
+				log.info("TC-19  Faculty teach and attendence Test PASSED \n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -201,12 +184,13 @@ public class Pfs_faculty {
 					Utils.printException(e);
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
-					Utils.logg(log, "warn", "TC-19  Faculty Course Content Test FAILED\n");
+					Utils.logg(log, "warn", "TC-19  Faculty teach and attendence Test FAILED\n");
 					break;
 				} else {
 					RetryCount++;
 					Utils.logout(driver, url, "student", log);
-					Utils.logg(log, "warn", "TC-19  Faculty Course Content Test case Failed Retrying once more\n");
+					Utils.logg(log, "warn",
+							"TC-19  Faculty teach and attendencet Test case Failed Retrying once more\n");
 
 				}
 			}
@@ -220,18 +204,16 @@ public class Pfs_faculty {
 			try {
 				System.out.println("TC-20 Faculty Examination Test Executation Statred");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkUrlToSkipTest(url)) {
-					Utils.logg(log, "info",
-							" TC-20 Faculty Examination Skipped this test as this is not applicable for this portal\n");
-					return;
-				}
-				Utils.clickXpath(driver, ActionXpath.facexam, time, "Click on the Examination span", log);
-				// Utils.clickXpath(driver, ActionXpath.facexamarrow, time, "facexamarrow");
-				// Utils.clickXpath(driver, ActionXpath.facexamdropdown, time, "Examination
-				// naroow dropdown");
-				// Utils.clickXpath(driver, ActionXpath.facexamexam, time, "facexamexam");
-				// Utils.clickXpath(driver, ActionXpath.facexamdate, time, "facexamdate");
-				// Utils.clickXpath(driver, ActionXpath.faceexamtime, time, "faceexamtime");
+				Utils.clickXpath(driver, ActionXpath.Examination, time, "Click on the Examination ", log);
+				Utils.clickXpath(driver, ActionXpath.examinationexam, time, "Click on the examinationexam ", log);
+				Utils.clickXpath(driver, ActionXpath.invigilation, time, "Click on the invigilation ", log);
+				Utils.clickXpath(driver, ActionXpath.Evaluation, time, "Click on the Examination ", log);
+				Utils.clickXpath(driver, ActionXpath.qnbank, time, "Click on the qnbank ", log);
+				ArrayList<String> newTb = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(newTb.get(0));
+				Utils.clickXpath(driver, ActionXpath.spresult, time, "Click on the spresult ", log);
+				Utils.clickXpath(driver, ActionXpath.editmark, time, "Click on the editmark ", log);
+				Utils.clickXpath(driver, ActionXpath.Submit, time, "Click on the Submit ", log);
 				Utils.logg(log, "info", " TC-20 Faculty Examanation test cases PASSED\n");
 				break;
 			} catch (Exception e) {
@@ -254,31 +236,13 @@ public class Pfs_faculty {
 
 	@Test(priority = 21)
 	public static void testFacultyMYStudent(String url, WebDriver driver, Logger log) throws Exception {
-		int RetryCount = 0;
 
 		try {
 			System.out.println("TC-21 Faculty My Students Test Executation Started");
 			Utils.goBackToHome(driver, url, log);
-			if (Utils.checkLtsta(url)) {
-				Utils.clickXpath(driver, ActionXpath.faccMyStudentltsta, time, "open the my student on ltsta", log);
-			} else {
-				Utils.clickXpath(driver, ActionXpath.faccMyStudent, time,
-						"open the commom for all portal expect ltsta", log);
-			}
-			Utils.bigSleepBetweenClicks(2);
-			WebElement l = driver.findElement(By.tagName("body"));
-			String p = l.getText();
-			// log.info(p);
-			// System.out.println(p);
-			if (p.contains("My Students") && p.contains("Subjects")) {
-				Utils.logg(log, "info", " TC-21 Faculty My Student  tab test case PASSED\n");
-
-			} else {
-
-				Utils.logg(log, "warn",
-						"TC-21 Faculty My Student  tab test case FAILED it does not contain all the tabs\n");
-
-			}
+			Utils.clickXpath(driver, ActionXpath.spstudents, time, "open the my student ", log);
+			Utils.clickXpath(driver, ActionXpath.Courses, time, "open the  Courses ", log);
+			Utils.logg(log, "info", " TC-21 Faculty My Student  tab test case PASSED\n");
 		} catch (Exception e) {
 
 			Utils.printException(e);
@@ -297,12 +261,10 @@ public class Pfs_faculty {
 			try {
 				System.out.println("TC-22  Faculty Attendance Test Executation Startred ");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.facattendanceforltsta, time, "click Attendance tab", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.facatt, time, "click Attendance tab", log);
-				}
-				Utils.clickXpath(driver, ActionXpath.faccAttendahis, time, "Click attendance history", log);
+				Utils.clickXpath(driver, ActionXpath.Attendence, time, "open Attendence", log);
+				Utils.clickXpath(driver, ActionXpath.markattendence, time, "open markattendence", log);
+				Utils.clickXpath(driver, ActionXpath.Attendencehistory, time, "open Attendencehistory", log);
+
 				Utils.logg(log, "info", " TC-22  Faculty Attendance test case PASSED\n");
 				break;
 			} catch (Exception e) {
@@ -324,24 +286,17 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 23)
-	public static void testFaculityTimetable(String url, WebDriver driver, Logger log) throws Exception {
+	public static void testFaculityCalender(String url, WebDriver driver, Logger log) throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
 				System.out.println("TC-23 Faculty Timetable Test Executation Started ");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.facClickTimetableltsta, time, "facClickTimetable", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.facClickTimetable, time, "facClickTimetable", log);
-				}
-				Utils.clickXpath(driver, ActionXpath.facttmonth, time, "facttmonth", log);
-				// Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.facttweek, time, "facttweek", log);
-				// Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.facttday, time, "facttday", log);
-				// Utils.smallSleepBetweenClicks(1);
-				Utils.logg(log, "info", " TC-23 : Faculty Timetable test case PASSED\n");
+				Utils.clickXpath(driver, ActionXpath.calender, time, "calender", log);
+				Utils.clickXpath(driver, ActionXpath.moth, time, "moth", log);
+				Utils.clickXpath(driver, ActionXpath.week, time, "week", log);
+				Utils.clickXpath(driver, ActionXpath.day, time, "day", log);
+				Utils.logg(log, "info", " TC-23 Faculty Timetable test case PASSED\n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -362,25 +317,19 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 24)
-	public static void testFacultyService(String url, WebDriver driver, Logger log) throws Exception {
+	public static void testFacultyEvents(String url, WebDriver driver, Logger log) throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
-				System.out.println("TC-24  Faculty Service Test case Started");
+				System.out.println("TC-24  Faculty events Test case Started");
 				Utils.goBackToHome(driver, url, log);
-				// Utils.bigSleepBetweenClicks(1);
-				Utils.clickOnFacultyService(driver, url, log);
-				Utils.smallSleepBetweenClicks(1);
-				if (Utils.checknsom(url)) {
-					Utils.clickXpath(driver, ActionXpath.FacRaisequerybutton, time, "Click on Raise case button", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.FacRaisebutton, time, "Click on Raise case button", log);
-				}
-				Utils.smallSleepBetweenClicks(1);
-				// Utils.scrollUpOrDown(driver, 300);
-				// Utils.clickXpath(driver, ActionXpath.facCancelSer, time, "cancel");
-				Utils.smallSleepBetweenClicks(1);
-				Utils.logg(log, "info", " TC-24 Faculty Service test cancel button Test case PASSED\n");
+				Utils.clickXpath(driver, ActionXpath.portevent, time, "click event", log);
+				Utils.clickXpath(driver, ActionXpath.portevent, time, "click event", log);
+				Utils.clickXpath(driver, ActionXpath.portfilter, time, "click filter", log);
+				Utils.clickXpath(driver, ActionXpath.allcategary, time, "click all categaroy", log);
+				Utils.clickXpath(driver, ActionXpath.selectallcategary, time, "click select categary", log);
+				Utils.clickXpath(driver, ActionXpath.cliclapply, time, "click apply button", log);
+				Utils.logg(log, "info", " TC-24 Faculty events test cancel button Test case PASSED\n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -388,13 +337,13 @@ public class Pfs_faculty {
 					Utils.printException(e);
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
-					Utils.logg(log, "warn", "TC-24 Faculty Service test cancel button Test case FAILED \n");
+					Utils.logg(log, "warn", "TC-24 Faculty events test cancel button Test case FAILED \n");
 					break;
 				} else {
 					RetryCount++;
 					Utils.logout(driver, url, "student", log);
 					Utils.logg(log, "info",
-							" TC-24 Faculty Service test cancel button Test case Failed Retrying once more\n");
+							" TC-24 Faculty events test cancel button Test case Failed Retrying once more\n");
 
 				}
 			}
@@ -402,31 +351,17 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 25)
-	public static void testFacultyRaiseCase(String student, String faculty, String url, WebDriver driver, Logger log)
+	public static void testFacultyfeedback(String student, String faculty, String url, WebDriver driver, Logger log)
 			throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
-				System.out.println("TC-25 Faculty Service Raise A Case ");
+				System.out.println("TC-25 Faculty feedback ");
 				Utils.goBackToHome(driver, url, log);
-				Utils.clickOnFacultyService(driver, url, log);
-				Utils.smallSleepBetweenClicks(1);
-				if (Utils.checknsom(url)) {
-					Utils.clickXpath(driver, ActionXpath.FacRaisequerybutton, time, "Click on Raise case button", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.FacRaisebutton, time, "Click on Raise case button", log);
-				}
-				Utils.smallSleepBetweenClicks(1);
-				if (Utils.raisecase(url)) {
-					Utils.clickXpath(driver, ActionXpath.Raisebutton, time, "Raise case button", log);
-				}
-				Utils.callSendkeys(driver, ActionXpath.inputSub, "Regd Error on Inviligation Secation", time, log);
-				Utils.callSendkeys(driver, ActionXpath.FacDesc,
-						"while i need to regd on the inviligation section m unable to do bcz its showing the system admin Error Sever not availbale 404 error.",
-						time, log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.SubmitRaise, time, "Submit the case", log);
-				Utils.logg(log, "info", " TC-25 Faculty service Status  Raise test case PASSED\n");
+				Utils.clickXpath(driver, ActionXpath.spfeedback, time, "spfeedback", log);
+				Utils.clickXpath(driver, ActionXpath.spprogram, time, "spprogram", log);
+				Utils.clickXpath(driver, ActionXpath.spinstute, time, "spinstute", log);
+				Utils.logg(log, "info", " TC-25 Faculty feedback test case PASSED\n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -434,13 +369,13 @@ public class Pfs_faculty {
 					Utils.printException(e);
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
-					Utils.logg(log, "warn", "TC-25 Faculty service Status  Raise Case FAILED \n");
+					Utils.logg(log, "warn", "TC-25 Faculty feedback test Case FAILED \n");
 					break;
 				} else {
 					RetryCount++;
 					Utils.logout(driver, url, "student", log);
 					Utils.logg(log, "info",
-							" TC-25 Faculty service Status  Raise Test case Failed Retrying once more\n");
+							" TC-25 Faculty feedback Test case Failed Retrying once more\n");
 
 				}
 			}
@@ -448,29 +383,17 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 26)
-	public static void testFacultyMakeRequest(String student, String faculty, String url, WebDriver driver, Logger log)
+	public static void testFacultyresources(String student, String faculty, String url, WebDriver driver, Logger log)
 			throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
-				System.out.println("TC-26 Starting Faculty make a request test case");
+				System.out.println("TC-26 Starting Faculty resources test case");
 				Utils.goBackToHome(driver, url, log);
-				Utils.clickOnFacultyService(driver, url, log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.facMakeRButtondevNsome, time, "Click on Make a request button",
-						log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.facMakeReqButtonSecond, time,
-						"Click on Second Make a request button",
-						log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.callSendkeys(driver, ActionXpath.makeSubjectIn, "5 days Leave Request ", time, log);
-				Utils.callSendkeys(driver, ActionXpath.makedesc,
-						"hi ...i want to take the 5 days leave bcz of some helath issue  m not availbe on this days some medical emergency plz approved my rqst... Thanks & regards Aditya .",
-						time, log);
-				Utils.clickXpath(driver, ActionXpath.MakeBtn, time, "Submit the Request", log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.logg(log, "info", "TC-26 Faculty service Make a request test case PASSED\n");
+				Utils.clickXpath(driver, ActionXpath.spresources, time, "Click onspresources", log);
+				ArrayList<String> newTb = new ArrayList<String>(driver.getWindowHandles());
+				driver.switchTo().window(newTb.get(0));
+				Utils.logg(log, "info", "TC-26 Faculty resources test case PASSED\n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -478,13 +401,13 @@ public class Pfs_faculty {
 					Utils.printException(e);
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
-					Utils.logg(log, "warn", "TC-26 Faculty service make a request Case FAILED\n");
+					Utils.logg(log, "warn", "TC-26 Faculty resources Case FAILED\n");
 					break;
 				} else {
 					RetryCount++;
 					Utils.logout(driver, url, "student", log);
 					Utils.logg(log, "info",
-							"TC-26 Faculty service Make a request Test case Failed Retrying once more\n");
+							"TC-26 Faculty resources Test case Failed Retrying once more\n");
 
 				}
 			}
@@ -492,23 +415,16 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 27)
-	public static void testFacultyEvent(String url, WebDriver driver, Logger log) throws Exception {
+	public static void testFacultyDocumentflow(String url, WebDriver driver, Logger log) throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
-				System.out.println("TC-27 Faculty Portal Event Tab Test case Started");
+				System.out.println("TC-27 Faculty Portal Documentflow Test case Started");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkLtsta(url)) {
-					Utils.clickXpath(driver, ActionXpath.faccEventltsta, time, "facEvent", log);
-				} else {
-					Utils.clickXpath(driver, ActionXpath.faccEvent, time, "facEvent", log);
-				}
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.faceventlocation, time, "faceventlocation", log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.faceventlocationselect, time, "faceventlocationselect", log);
-				Utils.callSendkeys(driver, ActionXpath.FaccSearch, "Ganesh", time, log);
-				Utils.logg(log, "info", " TC-27 Faculty Event test case PASSED\n");
+				Utils.clickXpath(driver, ActionXpath.documentflow, time, "documentflow", log);
+				Utils.clickXpath(driver, ActionXpath.refrenceoutline, time, "refrenceoutline", log);
+				Utils.clickXpath(driver, ActionXpath.refrencelist, time, "refrencelist", log);
+				Utils.logg(log, "info", " TC-27 Faculty Documentflow test case PASSED\n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -516,7 +432,7 @@ public class Pfs_faculty {
 					Utils.printException(e);
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
-					Utils.logg(log, "warn", "TC-27 Faculty Event Test case FAILED \n");
+					Utils.logg(log, "warn", "TC-27 Faculty Documentflow Test case FAILED \n");
 					break;
 				} else {
 					RetryCount++;
@@ -529,42 +445,20 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 28)
-	public static void testfacultyEditProfile(String student, String faculty, String url, WebDriver driver, Logger log)
+	public static void testfacultyContactflowConfirm(String student, String faculty, String url, WebDriver driver,
+			Logger log)
 			throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
 
-				System.out.println(" TC-28  Faculty Starting PersonalDetails Started  case executation");
-
-				if (Utils.skipthefacultyprofile(url)) {
-					Utils.logg(log, "info", " TC-28 Skip Faculty Profile\n");
-
-					return;
-
-				}
+				System.out.println(" TC-28  Faculty Starting Contactflow Confirm Started  case executation");
 				Utils.goBackToHome(driver, url, log);
+				Utils.clickXpath(driver, ActionXpath.contactflow, time, "facdpsave", log);
+				Utils.clickXpath(driver, ActionXpath.Accept, time, "Accept", log);
+				Utils.clickXpath(driver, ActionXpath.confirm, time, "confirm", log);
 
-				Utils.clickXpath(driver, ActionXpath.singinintial, time, "Select faculty initial icon", log);
-				Utils.clickXpath(driver, ActionXpath.faccprofile, time, "click on profile", log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.testfaculty, time, "testfaculty", log);
-				Utils.smallSleepBetweenClicks(1);
-				// Utils.clickXpath(driver, ActionXpath.facpdedit, time, "facpdedit", log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.faccgender, time, "faccgender", log);
-				Utils.clickXpath(driver, ActionXpath.faccselgender, time, "faccselgender", log);
-				Utils.callSendkeys(driver, ActionXpath.facpddob, "02-02-2020", time, log);
-				Utils.bigSleepBetweenClicks(1);
-				Utils.cleartext(driver, ActionXpath.facpdnationality);
-				Utils.callSendkeys(driver, ActionXpath.facpdnationality, "INDIA", time, log);
-				Utils.cleartext(driver, ActionXpath.faccph);
-				Utils.callSendkeys(driver, ActionXpath.faccph, "7010195163", time, log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.faccadd, time, "faccadd", log);
-				Utils.clickXpath(driver, ActionXpath.facdpsave, time, "facdpsave", log);
-				//// Utils.bigSleepBetweenClicks(1);
-				Utils.logg(log, "info", " TC-28 Faculty Starting PersonalDetails Completed test case PASSED\n");
+				Utils.logg(log, "info", " TC-28 Faculty Starting Contactflow Confirm Completed test case PASSED\n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -572,14 +466,14 @@ public class Pfs_faculty {
 					Utils.printException(e);
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
-					Utils.logg(log, "warn", "TC-28 Faculty Starting PersonalDetails test case FAILED\n");
+					Utils.logg(log, "warn", "TC-28 Faculty Starting Contactflow Confirm test case FAILED\n");
 					break;
 
 				} else {
 					RetryCount++;
 					Utils.logout(driver, url, "student", log);
 					Utils.logg(log, "info",
-							" TC-28 Faculty Starting PersonalDetails Completed Test case Failed Retrying once more\n");
+							" TC-28 Faculty Starting Contactflow Confirm Completed Test case Failed Retrying once more\n");
 
 				}
 			}
@@ -588,53 +482,20 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 29)
-	public static void testfacultyEditAddress(String student, String faculty, String url, WebDriver driver, Logger log)
+	public static void testfacultyContactflowreject(String student, String faculty, String url, WebDriver driver,
+			Logger log)
 			throws Exception {
 		int RetryCount = 0;
 		while (true) {
 
 			try {
-				System.out.println(" TC-29 Faculty Faculty Edit Address Started  case executation");
-
-				System.out.println(" TC-29 Faculty Starting PersonalDetails Started  case executation");
-
-				if (Utils.skipthefacultyprofile(url)) {
-					Utils.logg(log, "info", " TC-29 Skip Faculty Edit Address Faculty Profile\n");
-
-					return;
-
-				} else {
-
-					Utils.goBackToHome(driver, url, log);
-
-					// Utils.goBackToHome(driver, url, log);
-					Utils.clickXpath(driver, ActionXpath.FCCportal, time, "facSelectPrtoSignout", log);
-					Utils.clickXpath(driver, ActionXpath.faccProfile, time, "facprofile", log);
-					Utils.clickXpath(driver, ActionXpath.address, time, "addressdetais", log);
-					Utils.clickXpath(driver, ActionXpath.facdpaddedit, time, "facdpaddedit", log);
-					Utils.clickXpath(driver, ActionXpath.facdptype, time, "facdptype", log);
-					Utils.clickXpath(driver, ActionXpath.FaccfaccTypeSelect, time, "facdptypeselect", log);
-					Utils.callSendkeys(driver, ActionXpath.faccAddress, "Coimbatore", time, log);
-					Utils.callSendkeys(driver, ActionXpath.faccPincode, "600001", time, log);
-					Utils.clickXpath(driver, ActionXpath.facccountry, time, "facdpcountry", log);
-					Utils.clickXpath(driver, ActionXpath.faccSelectCountry2, time, "facdpcountrysselect", log);
-
-					Utils.clickXpath(driver, ActionXpath.facccountry, time, "facdpcountry", log);
-					Utils.clickXpath(driver, ActionXpath.faccSelectCountry, time, "facdpcountrysselect", log);
-
-					Utils.clickXpath(driver, ActionXpath.faccstate, time, "faccstate", log);
-					Utils.clickXpath(driver, ActionXpath.faccSelectState2, time, "faccSelectState", log);
-					Utils.clickXpath(driver, ActionXpath.faccstate, time, "faccstate", log);
-					Utils.clickXpath(driver, ActionXpath.faccSelectState, time, "faccSelectState", log);
-
-					Utils.clickXpath(driver, ActionXpath.faccCity, time, "faccCity", log);
-					Utils.clickXpath(driver, ActionXpath.faccSelectCity, time, "faccSelectCity", log);
-
-					Utils.clickXpath(driver, ActionXpath.faccSaveaddress, time, "facdpaddsave", log);
-					//// Utils.bigSleepBetweenClicks(1);
-					Utils.logg(log, "info", "TC-29 Faculty edit Address Details Completed test case PASSED \n");
-
-				}
+				System.out.println(" TC-29 Faculty Contactflow reject  case executation");
+				Utils.goBackToHome(driver, url, log);
+				Utils.clickXpath(driver, ActionXpath.contactflow, time, "contactflow", log);
+				Utils.clickXpath(driver, ActionXpath.reject, time, "reject", log);
+				Utils.clickXpath(driver, ActionXpath.Submit, time, "Submit", log);
+				Utils.clickXpath(driver, ActionXpath.sendapproval, time, "sendapproval", log);
+				Utils.logg(log, "info", " TC-29 Faculty Contactflow reject test case PASSED\n");
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -643,13 +504,13 @@ public class Pfs_faculty {
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
 
-					Utils.logg(log, "warn", "TC-29 Faculty edit Address Details test case FAILED\n");
+					Utils.logg(log, "warn", "TC-29 Faculty Contactflow reject test case FAILED\n");
 					break;
 				} else {
 					RetryCount++;
 					Utils.logout(driver, url, "student", log);
 					Utils.logg(log, "info",
-							"TC-29 Faculty edit Address Details Completed Test case Failed Retrying once more \n");
+							"TC-29 Faculty eContactflow reject Completed Test case Failed Retrying once more \n");
 
 				}
 			}
@@ -657,55 +518,21 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 30)
-	public static void testfacultyEditAcademicDetails(String student, String faculty, String url, WebDriver driver,
+	public static void testfacultyEditprofile(String student, String faculty, String url, WebDriver driver,
 			Logger log) throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
 
-				System.out.println(" TC-30   Faculty Starting Edit Academic Details Started  case executation");
+				System.out.println(" TC-30   Faculty Starting Edit personal Details Started  case executation");
+				Utils.goBackToHome(driver, url, log);
+				Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "facSelectPrtoSignout", log);
+				Utils.clickXpath(driver, ActionXpath.kerprofile, time, "kerprofile", log);
+				driver.navigate().refresh();
+				Utils.smallSleepBetweenClicks(2);
+				Utils.clickXpath(driver, ActionXpath.personaldetails, time, "faccacadmics", log);
+				Utils.logg(log, "info", "TC-30  personal Details Completed test case PASSED \n");
 
-				if (Utils.skipthefacultyprofile(url)) {
-					Utils.logg(log, "info", "TC-30 Skip Edit Details Faculty Profile \n");
-
-					return;
-
-				} else {
-					Utils.goBackToHome(driver, url, log);
-
-					// Utils.goBackToHome(driver, url, log);
-					Utils.smallSleepBetweenClicks(2);
-					Utils.clickXpath(driver, ActionXpath.FCCportal, time, "facSelectPrtoSignout", log);
-					Utils.clickXpath(driver, ActionXpath.faccProfile, time, "facprofile", log);
-					Utils.clickXpath(driver, ActionXpath.faccacadmics, time, "faccacadmics", log);
-					Utils.smallSleepBetweenClicks(2);
-					boolean addrow = false;
-					addrow = driver.findElements(By.xpath("(//*[text()='Add Row'])")).size() > 0;
-					if (addrow) {
-						Utils.clickXpath(driver, ActionXpath.faccaddrow, time, "faccaddrow", log);
-						Utils.clickXpath(driver, ActionXpath.facdplevel, time, "facdplevel", log);
-						Utils.clickXpath(driver, ActionXpath.facdplevelselect, time, "facdplevelselect", log);
-						Utils.clickXpath(driver, ActionXpath.facdpadcountry, time, "facdpadcountry", log);
-						Utils.clickXpath(driver, ActionXpath.facdpadcountryselect, time, "facdpadcountryselect", log);
-						Utils.callSendkeys(driver, ActionXpath.facdpaduniversity, "ANNA", time, log);
-						Utils.callSendkeys(driver, ActionXpath.facdpadyear, "2020", time, log);
-
-					} else {
-						Utils.clickXpath(driver, ActionXpath.facdplevel, time, "facdplevel", log);
-						Utils.clickXpath(driver, ActionXpath.facdplevelselect, time, "facdplevelselect", log);
-						Utils.clickXpath(driver, ActionXpath.facdpadcountry, time, "facdpadcountry", log);
-						Utils.clickXpath(driver, ActionXpath.facdpadcountryselect, time, "facdpadcountryselect", log);
-						Utils.callSendkeys(driver, ActionXpath.facdpaduniversity, "ANNA", time, log);
-						Utils.callSendkeys(driver, ActionXpath.facdpadyear, "2020", time, log);
-
-					}
-					Utils.smallSleepBetweenClicks(1);
-					Utils.clickXpath(driver, ActionXpath.faccsave, time, "faccsave", log);
-
-					Utils.smallSleepBetweenClicks(1);
-					Utils.logg(log, "info", "TC-30  Academic Details Completed test case PASSED \n");
-
-				}
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -713,13 +540,13 @@ public class Pfs_faculty {
 					Utils.printException(e);
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
-					Utils.logg(log, "warn", "TC-30  Academic Details test case FAILED\n");
+					Utils.logg(log, "warn", "TC-30  personal Details test case FAILED\n");
 					break;
 				} else {
 					RetryCount++;
 					Utils.logout(driver, url, "student", log);
 					Utils.logg(log, "info",
-							"TC-30  Academic Details Completed Test case Failed Retrying once more \n");
+							"TC-30  personal Details Completed Test case Failed Retrying once more \n");
 
 				}
 			}
@@ -727,57 +554,20 @@ public class Pfs_faculty {
 	}
 
 	@Test(priority = 31)
-	public static void testfacultyEditEXPERIENCE(String student, String faculty, String url, WebDriver driver,
+	public static void testfacultyEditprofileimage(String student, String faculty, String url, WebDriver driver,
 			Logger log) throws Exception {
 		int RetryCount = 0;
 		while (true) {
 			try {
 
-				System.out.println(" TC-31 Faculty Starting Edit Experience Started  case executation");
+				System.out.println(" TC-31 Faculty Starting Edit profileimage Started  case executation");
+				Utils.goBackToHome(driver, url, log);
+				Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "facSelectPrtoSignout", log);
+				Utils.clickXpath(driver, ActionXpath.editimage, time, "stuaddadd", log);
+				driver.navigate().refresh();
 
-				if (Utils.skipthefacultyprofile(url)) {
-					Utils.logg(log, "info", "TC-31 Skip Edit Experience Faculty Profile\n");
+				Utils.logg(log, "info", "TC-31  Faculty Starting Edit profileimage Started  test case PASSED \n");
 
-					return;
-
-				} else {
-
-					Utils.goBackToHome(driver, url, log);
-
-					System.out.println(" TC:31 Faculty Starting Edit Experience Started  case executation");
-					Utils.goBackToHome(driver, url, log);
-					Utils.clickXpath(driver, ActionXpath.FCCportal, time, "facclickonT", log);
-					//// Utils.bigSleepBetweenClicks(1);
-					Utils.clickXpath(driver, ActionXpath.facclickonprofile, time, "facclickonprofile", log);
-					Utils.smallSleepBetweenClicks(1);
-					Utils.clickXpath(driver, ActionXpath.faccexpe, time, " faccexpe", log);
-					// Utils.clickXpath(driver, ActionXpath.facdpreedit, time, "facdpreedit", log);
-					// Utils.clickXpath(driver, ActionXpath.facdpreadd, time, "facdpreadd", log);
-					Utils.smallSleepBetweenClicks(1);
-					Utils.scrollUpOrDown(driver, 300);
-					Utils.callSendkeys(driver, ActionXpath.faccinst, "IIT", time, log);
-					Utils.callSendkeys(driver, ActionXpath.faccposition, "teching", time, log);
-					Utils.callSendkeys(driver, ActionXpath.faccrole, "techer", time, log);
-					Utils.callSendkeys(driver, ActionXpath.faccduration, "10", time, log);
-					Utils.callSendkeys(driver, ActionXpath.faccdecs, "professor", time, log);
-					Utils.clickXpath(driver, ActionXpath.faccsave1, time, "faccsave2", log);
-					Utils.smallSleepBetweenClicks(2);
-					// Utils.callSendkeys(driver, ActionXpath.faccexpeindu, "IITbangalugru", time,
-					// log);
-					Utils.callSendkeys(driver, ActionXpath.faccinstindu, "IITbangalugru", time, log);
-					Utils.callSendkeys(driver, ActionXpath.faccpositionindu, "techer", time, log);
-					Utils.callSendkeys(driver, ActionXpath.faccroleindu, "11", time, log);
-					Utils.callSendkeys(driver, ActionXpath.faccdurationindu, "11", time, log);
-					Utils.clickXpath(driver, ActionXpath.faccsave2indu, time, "faccsave2", log);
-
-					Utils.clickXpath(driver, ActionXpath.faccpacco, time, "faccpacco", log);
-					Utils.callSendkeys(driver, ActionXpath.proname, "11", time, log);
-					Utils.callSendkeys(driver, ActionXpath.prolink, "https://portal-dev.ken42.com", time, log);
-					Utils.callSendkeys(driver, ActionXpath.prolink, "sample", time, log);
-					Utils.clickXpath(driver, ActionXpath.prosave, time, "prosave", log);
-					Utils.logg(log, "info", "TC-31  Faculty Starting Edit Experience Started  test case PASSED \n");
-
-				}
 				break;
 			} catch (Exception e) {
 				if (RetryCount >= 1) {
@@ -786,13 +576,13 @@ public class Pfs_faculty {
 					Utils.goBackToHome(driver, url, log);
 					Utils.logout(driver, url, "faculty", log);
 					Utils.logg(log, "warn",
-							"TC-31 Faculty Starting Edit Experience Started  test case test case FAILED\n");
+							"TC-31 Faculty Starting Edit profileimage Started  test case test case FAILED\n");
 					break;
 				} else {
 					RetryCount++;
 					Utils.logout(driver, url, "student", log);
 					Utils.logg(log, "info",
-							"TC-31  Faculty Starting Edit Experience Started  Test case Failed Retrying once more \n");
+							"TC-31  Faculty Starting Edit profileimage Started  Test case Failed Retrying once more \n");
 
 				}
 			}

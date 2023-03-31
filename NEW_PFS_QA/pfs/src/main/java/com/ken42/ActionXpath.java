@@ -1242,4 +1242,37 @@ public class ActionXpath {
    static String institude = "(//*[text()='Institute'])[1]";
    static String resoures = "(//*[text()='Resources'])[1]";
 
+   // FACULTYSPJAIN
+   static String mypath = "//*[text()='My Path']";
+   static String Achivement = "//*[text()='Achievements']";
+   static String sppersonaldetails = "//*[text()='Personal Details']";
+   static String teach = "//span[text()='Teach']";
+   static String Attendence = "//span[text()='Attendance']";
+   static String markattendence = "//span[text()='Mark Attendance']";
+   static String Attendencehistory = "//span[text()='Attendance History']";
+   static String Examination = "//span[text()='Examinations']";
+   static String examinationexam = "//button//span[text()='Examinations']";
+   static String invigilation = "//button//span[text()='Invigilation/Proctoring']";
+   static String Evaluation = "//button//span[text()='Evaluation']";
+   static String qnbank = "//button//span[text()='Qn Bank']";
+   static String spresult = "//span[text()='Result']";
+   static String editmark = "//span[text()='Add/Edit Marks']";
+   static String spstudents = "//span[text()='My Students']";
+   static String Courses = "//*[text()='Courses']";
+   // calende
+   // event
+   static String spfeedback = "(//span[. and text()='Feedback'])[1]";
+   static String spprogram = "//*[. and text()='Program']";
+   static String spinstute = "//*[. and text()='Institute']";
+   static String spresources = "//*[. and text()='Resources']";
+   static String documentflow = "//*[. and text()='Document FLow']";
+   static String refrenceoutline = "//*[. and text()='Reference Outline']";
+   static String refrencelist = "//*[. and text()='Reference List']";
+   static String contactflow = "//*[. and text()='Contract FLow']";
+   static String Accept = "//*[. and text()='Accept']";
+   static String confirm = "//*[. and text()='Confirm']";
+   static String reject = "//*[. and text()='Reject']";
+   static String Submit = "//*[. and text()='Submit'] |//*[. and text()=' Submit']";
+   static String sendapproval = "//*[. and text()='Send For Approval']";
+
 }
