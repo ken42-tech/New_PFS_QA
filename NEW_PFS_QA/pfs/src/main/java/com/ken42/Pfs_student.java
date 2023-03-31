@@ -42,17 +42,27 @@ public class Pfs_student {
 			try {
 				System.out.println(" TC-2  Starting Student Enrollment  case execution");
 				Utils.smallSleepBetweenClicks(2);
-				Utils.clickXpath(driver, ActionXpath.portfolio, time, "click portfolio", log);
-				Utils.clickXpath(driver, ActionXpath.kerextracuricular, time, "Click on extracuricularactivties",
-						log);
 
-				Utils.clickXpath(driver, ActionXpath.kerachivement, time, "Click achivement", log);
-				Utils.clickXpath(driver, ActionXpath.kerconduct, time, "Click Conduct", log);
-				Utils.clickXpath(driver, ActionXpath.kerrequestcomplint, time, "Click port&complint", log);
-				Utils.bigSleepBetweenClicks(2);
-				// Utils.clickXpath(driver, ActionXpath.portraisetiket, time, "Click
-				// Raise&tiket", log);
-				Utils.clickXpath(driver, ActionXpath.portpersonaldet, time, "Click personal dr", log);
+				if (Utils.kernal(url)) {
+					Utils.clickXpath(driver, ActionXpath.portfolio, time, "click portfolio", log);
+					Utils.clickXpath(driver, ActionXpath.kerextracuricular, time, "Click on extracuricularactivties",
+							log);
+
+					Utils.clickXpath(driver, ActionXpath.kerachivement, time, "Click achivement", log);
+					Utils.clickXpath(driver, ActionXpath.kerconduct, time, "Click Conduct", log);
+					Utils.clickXpath(driver, ActionXpath.kerrequestcomplint, time, "Click port&complint", log);
+					Utils.bigSleepBetweenClicks(2);
+					// Utils.clickXpath(driver, ActionXpath.portraisetiket, time, "Click
+					// Raise&tiket", log);
+					Utils.clickXpath(driver, ActionXpath.portpersonaldet, time, "Click personal dr", log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.my360, time, "click My360", log);
+					Utils.clickXpath(driver, ActionXpath.fees, time, "click fees", log);
+					Utils.clickXpath(driver, ActionXpath.achivements, time, "click Achivements", log);
+					Utils.clickXpath(driver, ActionXpath.personaldetails, time, "click personaldetails", log);
+					Utils.clickXpath(driver, ActionXpath.personaldetails, time, "click personaldetails", log);
+
+				}
 
 				Utils.logg(log, "info", "TC-2 Enrollment of the Student Test Case PASSED \n");
 				break;
@@ -80,10 +90,23 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-3: Starting Student Academic  test case execution\n");
-				Utils.clickXpath(driver, ActionXpath.dashbord, time, "click dashbord", log);
-				Utils.clickXpath(driver, ActionXpath.clicklearn, time, "click learn", log);
-				Utils.clickXpath(driver, ActionXpath.overalldropdown, time, "click over all drop down", log);
-				Utils.clickXpath(driver, ActionXpath.selectoveralldropdown, time, "select the all drop down", log);
+				if (Utils.kernal(url)) {
+					Utils.clickXpath(driver, ActionXpath.dashbord, time, "click dashbord", log);
+					Utils.clickXpath(driver, ActionXpath.clicklearn, time, "click learn", log);
+					Utils.clickXpath(driver, ActionXpath.overalldropdown, time, "click over all drop down", log);
+					Utils.clickXpath(driver, ActionXpath.selectoveralldropdown, time, "select the all drop down", log);
+
+				} else {
+					Utils.clickXpath(driver, ActionXpath.sfees, time, "click fees", log);
+					Utils.clickXpath(driver, ActionXpath.fesscart, time, "click fees cart", log);
+					Utils.clickXpath(driver, ActionXpath.feesschedule, time, "fees schedule", log);
+					Utils.clickXpath(driver, ActionXpath.transaction, time, "click transaction", log);
+					Utils.clickXpath(driver, ActionXpath.manualfeepayment, time, "click manual fees payment", log);
+					Utils.clickXpath(driver, ActionXpath.studentserivece, time, "click studentservices", log);
+					Utils.clickXpath(driver, ActionXpath.offerletterfeesdetails, time, "click offer letter details",
+							log);
+					Utils.clickXpath(driver, ActionXpath.studentserivece, time, "click studentservices", log);
+				}
 
 				Utils.logg(log, "info", "TC-3 Student Academic Test Case PASSED  \n");
 				break;
@@ -112,17 +135,28 @@ public class Pfs_student {
 			try {
 				System.out.println("TC-4:   Starting Student Examination test case execution");
 				Utils.goBackToHome(driver, url, log);
-				if (Utils.checkUrlToSkipTest(url)) {
-					Utils.logg(log, "info", "TC-4 Exam tab Skipped as this is not applicable for this portal \n");
+				if (Utils.kernal(url)) {
+					if (Utils.checkUrlToSkipTest(url)) {
+						Utils.logg(log, "info", "TC-4 Exam tab Skipped as this is not applicable for this portal \n");
 
-					return;
-				}
-				if (Utils.checkLtsta(url)) {
-					// Do nothing
+						return;
+					}
+					if (Utils.checkLtsta(url)) {
+						// Do nothing
+					} else {
+						Utils.clickXpath(driver, ActionXpath.ClickExam, time, "Click Exams", log);
+					}
+					Utils.clickXpath(driver, ActionXpath.examAnnouncements, time, "Click on Announcement", log);
 				} else {
-					Utils.clickXpath(driver, ActionXpath.ClickExam, time, "Click Exams", log);
+					Utils.clickXpath(driver, ActionXpath.attendence, time, "Click on Attendence", log);
+					Utils.clickXpath(driver, ActionXpath.overview, time, "Click on overview", log);
+					Utils.clickXpath(driver, ActionXpath.subjectname, time, "Click on Subjectname", log);
+					Utils.clickXpath(driver, ActionXpath.sectionc, time, "Click on section", log);
+					Utils.clickXpath(driver, ActionXpath.totalattendance, time, "Click on Total attendence", log);
+					Utils.clickXpath(driver, ActionXpath.view, time, "Click on view", log);
+
 				}
-				Utils.clickXpath(driver, ActionXpath.examAnnouncements, time, "Click on Announcement", log);
+
 				Utils.logg(log, "info", "TC-4 Student Examination Test Case PASSED \n");
 				break;
 			} catch (Exception e) {
@@ -150,8 +184,17 @@ public class Pfs_student {
 			try {
 				System.out.println("TC-5: Starting Student Attendance test case execution");
 
-				Utils.clickXpath(driver, ActionXpath.clickonattendance, time, "Select the Attendance History",
-						log);
+				if (Utils.kernal(url)) {
+					Utils.clickXpath(driver, ActionXpath.clickonattendance, time, "Select the Attendance History",
+							log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.attendence, time, "Click on Attendence", log);
+					Utils.clickXpath(driver, ActionXpath.overview, time, "Click on overview", log);
+					Utils.clickXpath(driver, ActionXpath.subjectname, time, "Click on Subjectname", log);
+					Utils.clickXpath(driver, ActionXpath.sectionc, time, "Click on section", log);
+					Utils.clickXpath(driver, ActionXpath.totalattendance, time, "Click on Total attendence", log);
+					Utils.clickXpath(driver, ActionXpath.view, time, "Click on view", log);
+				}
 
 				Utils.logg(log, "info", "TC-5 Student Attendance Test Case PASSED  \n");
 				break;
@@ -178,12 +221,23 @@ public class Pfs_student {
 		int RetryCount = 0;
 		while (true) {
 			try {
-				System.out.println("TC-6: Starting Student Timetable test case execution ");
-				Utils.goBackToHome(driver, url, log);
-				Utils.clickXpath(driver, ActionXpath.ClickTimetable, time, "Select time table", log);
-				Utils.clickXpath(driver, ActionXpath.TimeTableMonth, time, "Select Month view", log);
-				Utils.clickXpath(driver, ActionXpath.TimeTableWeek, time, "Selecte Week view", log);
-				Utils.clickXpath(driver, ActionXpath.TimeTableDay, time, "Select Day view", log);
+
+				if (Utils.kernal(url)) {
+					System.out.println("TC-6: Starting Student Timetable test case execution ");
+					Utils.goBackToHome(driver, url, log);
+					Utils.clickXpath(driver, ActionXpath.ClickTimetable, time, "Select time table", log);
+					Utils.clickXpath(driver, ActionXpath.TimeTableMonth, time, "Select Month view", log);
+					Utils.clickXpath(driver, ActionXpath.TimeTableWeek, time, "Selecte Week view", log);
+					Utils.clickXpath(driver, ActionXpath.TimeTableDay, time, "Select Day view", log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.attendence, time, "Click on Attendence", log);
+					Utils.clickXpath(driver, ActionXpath.attenceshistorry, time, "Click on Attendencehistory", log);
+					Utils.clickXpath(driver, ActionXpath.subjectnamed, time, "Click on Subjectname", log);
+					Utils.clickXpath(driver, ActionXpath.date, time, "Click on date", log);
+					Utils.clickXpath(driver, ActionXpath.resontype, time, "Click on reson type", log);
+					Utils.clickXpath(driver, ActionXpath.status, time, "Click on status", log);
+				}
+
 				Utils.logg(log, "info", "TC-6   Student Timetable Test Case PASSED  \n");
 				break;
 			} catch (Exception e) {
@@ -210,19 +264,37 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-7:  Starting Student FEES test case execution");
-				Utils.goBackToHome(driver, url, log);
 
-				Utils.clickXpath(driver, ActionXpath.clickonfees, time, "Expand the Fees", log);
-				Utils.clickXpath(driver, ActionXpath.clickonpendingfees, time, " Click pendingfees", log);
-				Utils.clickXpath(driver, ActionXpath.clickonfeecart, time, "Expand the Fees cart", log);
+				if (Utils.kernal(url)) {
 
-				Utils.clickXpath(driver, ActionXpath.clickonfeeschedule, time, "Expand the Fees schedule", log);
-				Utils.clickXpath(driver, ActionXpath.clickonfeescheduleclass, time, " Click Fee Schedule class", log);
-				Utils.clickXpath(driver, ActionXpath.clickontranscation, time, "clickon transcation", log);
+					Utils.goBackToHome(driver, url, log);
 
-				Utils.clickXpath(driver, ActionXpath.clickonstudentservice, time, " clickon studentservice", log);
-				Utils.clickXpath(driver, ActionXpath.clickonfeestudentserviceinr, time, "clickon feestudentserviceinr",
-						log);
+					Utils.clickXpath(driver, ActionXpath.clickonfees, time, "Expand the Fees", log);
+					Utils.clickXpath(driver, ActionXpath.clickonpendingfees, time, " Click pendingfees", log);
+					Utils.clickXpath(driver, ActionXpath.clickonfeecart, time, "Expand the Fees cart", log);
+
+					Utils.clickXpath(driver, ActionXpath.clickonfeeschedule, time, "Expand the Fees schedule", log);
+					Utils.clickXpath(driver, ActionXpath.clickonfeescheduleclass, time, " Click Fee Schedule class",
+							log);
+					Utils.clickXpath(driver, ActionXpath.clickontranscation, time, "clickon transcation", log);
+
+					Utils.clickXpath(driver, ActionXpath.clickonstudentservice, time, " clickon studentservice", log);
+					Utils.clickXpath(driver, ActionXpath.clickonfeestudentserviceinr, time,
+							"clickon feestudentserviceinr",
+							log);
+
+				} else {
+					Utils.clickXpath(driver, ActionXpath.lleran, time, "Click on Learn", log);
+					Utils.bigSleepBetweenClicks(3);
+					// Utils.clickXpath(driver, ActionXpath.techinglearning, time, "Click on Teching
+					// learing", log);
+					// Utils.clickXpath(driver, ActionXpath.sevrcesss, time, "Click on Servress",
+					// log);
+					// Utils.clickXpath(driver, ActionXpath.industies, time, "Click on Industries",
+					// log);
+					// Utils.clickXpath(driver, ActionXpath.aboutus, time, "Click on Aboutus", log);
+
+				}
 
 				Utils.logg(log, "info", "TC-7 Student Fees Test Case PASSED  \n");
 				break;
@@ -250,10 +322,24 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-8:   Starting Student FEEDBACK test case execution");
-				Utils.goBackToHome(driver, url, log);
-				Utils.clickXpath(driver, ActionXpath.feedBack, time, "FeedBack", log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.clickPending, time, "Programe Feedbcak", log);
+
+				if (Utils.kernal(url)) {
+
+					Utils.goBackToHome(driver, url, log);
+					Utils.clickXpath(driver, ActionXpath.feedBack, time, "FeedBack", log);
+					Utils.smallSleepBetweenClicks(1);
+					Utils.clickXpath(driver, ActionXpath.clickPending, time, "Programe Feedbcak", log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.examination, time, "Click on examination", log);
+
+					Utils.clickXpath(driver, ActionXpath.myrequest, time, "Click on my request", log);
+					Utils.clickXpath(driver, ActionXpath.applybtn, time, "Click on apply button",
+							log);
+					driver.navigate().refresh();
+					Utils.clickXpath(driver, ActionXpath.examhistory, time, "Click on exam history",
+							log);
+
+				}
 				Utils.logg(log, "info", "TC-8 Student FEEDBACK tab Test Case PASSED \n");
 				break;
 			} catch (Exception e) {
@@ -280,16 +366,24 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-9  Starting  Student Services check cancel button test case execution ");
-				Utils.goBackToHome(driver, url, log);
+				if (Utils.kernal(url)) {
+					Utils.goBackToHome(driver, url, log);
 
-				Utils.clickXpath(driver, ActionXpath.StudentService, time, "Student Status", log);
-				Utils.clickXpath(driver, ActionXpath.addrequest, time, "Make Raise", log);
-				Utils.clickXpath(driver, ActionXpath.requesttype, time, "Raise case", log);
-				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
-				Utils.clickXpath(driver, ActionXpath.Priority, time, "Raise case", log);
-				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
-				Utils.callSendkeys(driver, ActionXpath.reasonrequst, "WIfi not working ", time, log);
-				Utils.clickXpath(driver, ActionXpath.Submitrequest, time, "Cancel the raise case", log);
+					Utils.clickXpath(driver, ActionXpath.StudentService, time, "Student Status", log);
+					Utils.clickXpath(driver, ActionXpath.addrequest, time, "Make Raise", log);
+					Utils.clickXpath(driver, ActionXpath.requesttype, time, "Raise case", log);
+					Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
+					Utils.clickXpath(driver, ActionXpath.Priority, time, "Raise case", log);
+					Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
+					Utils.callSendkeys(driver, ActionXpath.reasonrequst, "WIfi not working ", time, log);
+					Utils.clickXpath(driver, ActionXpath.Submitrequest, time, "Cancel the raise case", log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.result, time, "Click on result", log);
+
+					Utils.clickXpath(driver, ActionXpath.history, time, "Click on history", log);
+
+				}
+
 				Utils.logg(log, "info", "TC-9 Student Services check cancel button Test Case PASSED \n");
 				break;
 			} catch (Exception e) {
@@ -318,16 +412,26 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-10 Starting Student Services Raise test case execution \n");
-				Utils.goBackToHome(driver, url, log);
 
-				Utils.clickXpath(driver, ActionXpath.StudentService, time, "Raise case", log);
-				Utils.clickXpath(driver, ActionXpath.raisecomplain, time, "Button Raise", log);
-				Utils.clickXpath(driver, ActionXpath.requesttype, time, "Raise case", log);
-				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
-				Utils.clickXpath(driver, ActionXpath.Priority, time, "Raise case", log);
-				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
-				Utils.callSendkeys(driver, ActionXpath.reasonrequst, "WIfi not working ", time, log);
-				Utils.clickXpath(driver, ActionXpath.Submitrequest, time, "Cancel the raise case", log);
+				if (Utils.kernal(url)) {
+					Utils.goBackToHome(driver, url, log);
+
+					Utils.clickXpath(driver, ActionXpath.StudentService, time, "Raise case", log);
+					Utils.clickXpath(driver, ActionXpath.raisecomplain, time, "Button Raise", log);
+					Utils.clickXpath(driver, ActionXpath.requesttype, time, "Raise case", log);
+					Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
+					Utils.clickXpath(driver, ActionXpath.Priority, time, "Raise case", log);
+					Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "Button Raise", log);
+					Utils.callSendkeys(driver, ActionXpath.reasonrequst, "WIfi not working ", time, log);
+					Utils.clickXpath(driver, ActionXpath.Submitrequest, time, "Cancel the raise case", log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.completedenroll, time, "Click on completed entrollment", log);
+					Utils.clickXpath(driver, ActionXpath.openentroll, time, "Click the open entrollment", log);
+					Utils.clickXpath(driver, ActionXpath.clickview, time, "Click view", log);
+					Utils.clickXpath(driver, ActionXpath.clickok, time, "Click on ok", log);
+
+				}
+
 				Utils.logg(log, "info", " TC-10 Student Service Raise case Test Case PASSED \n");
 				break;
 			} catch (Exception e) {
@@ -356,14 +460,22 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-11 Starting Student Services make request test case execution ");
-				Utils.goBackToHome(driver, url, log);
-				Utils.clickXpath(driver, ActionXpath.StudentService, time, "Raise case", log);
-				Utils.clickXpath(driver, ActionXpath.requestfilter, time, "Student Status", log);
-				Utils.clickXpath(driver, ActionXpath.filter1, time, "Click the button Make raise", log);
-				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "selet the Button Make request", log);
-				Utils.clickXpath(driver, ActionXpath.filter2, time, "Submit the make requst option", log);
-				Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "selet the Button Make request", log);
-				Utils.clickXpath(driver, ActionXpath.Applyss, time, "selet the Button Make request", log);
+				if (Utils.kernal(url)) {
+					Utils.goBackToHome(driver, url, log);
+					Utils.clickXpath(driver, ActionXpath.StudentService, time, "Raise case", log);
+					Utils.clickXpath(driver, ActionXpath.requestfilter, time, "Student Status", log);
+					Utils.clickXpath(driver, ActionXpath.filter1, time, "Click the button Make raise", log);
+					Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "selet the Button Make request", log);
+					Utils.clickXpath(driver, ActionXpath.filter2, time, "Submit the make requst option", log);
+					Utils.clickXpath(driver, ActionXpath.selectdropdown, time, "selet the Button Make request", log);
+					Utils.clickXpath(driver, ActionXpath.Applyss, time, "selet the Button Make request", log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.calender, time, "Click on the calender", log);
+					Utils.clickXpath(driver, ActionXpath.moth, time, "Click on the moth", log);
+					Utils.clickXpath(driver, ActionXpath.week, time, "Click on the week", log);
+					Utils.clickXpath(driver, ActionXpath.day, time, "Click on the day", log);
+
+				}
 				Utils.logg(log, "info", " TC-11 Student services make request test case PASSED  \n");
 				break;
 
@@ -392,13 +504,25 @@ public class Pfs_student {
 		while (true) {
 			try {
 				System.out.println("TC-12  Starting Student Event case Execution ");
-				Utils.goBackToHome(driver, url, log);
-				Utils.goBackToHome(driver, url, log);
-				Utils.clickXpath(driver, ActionXpath.portevent, time, "click event", log);
-				Utils.clickXpath(driver, ActionXpath.portfilter, time, "click filter", log);
-				Utils.clickXpath(driver, ActionXpath.allcategary, time, "click all categaroy", log);
-				Utils.clickXpath(driver, ActionXpath.selectallcategary, time, "click select categary", log);
-				Utils.clickXpath(driver, ActionXpath.cliclapply, time, "click apply button", log);
+
+				if (Utils.kernal(url)) {
+					Utils.goBackToHome(driver, url, log);
+					Utils.goBackToHome(driver, url, log);
+					Utils.clickXpath(driver, ActionXpath.portevent, time, "click event", log);
+					Utils.clickXpath(driver, ActionXpath.portfilter, time, "click filter", log);
+					Utils.clickXpath(driver, ActionXpath.allcategary, time, "click all categaroy", log);
+					Utils.clickXpath(driver, ActionXpath.selectallcategary, time, "click select categary", log);
+					Utils.clickXpath(driver, ActionXpath.cliclapply, time, "click apply button", log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.portevent, time, "click event", log);
+					Utils.clickXpath(driver, ActionXpath.portevent, time, "click event", log);
+					Utils.clickXpath(driver, ActionXpath.portfilter, time, "click filter", log);
+					Utils.clickXpath(driver, ActionXpath.allcategary, time, "click all categaroy", log);
+					Utils.clickXpath(driver, ActionXpath.selectallcategary, time, "click select categary", log);
+					Utils.clickXpath(driver, ActionXpath.cliclapply, time, "click apply button", log);
+
+				}
+
 				Utils.logg(log, "info", "TC-12 Student EVENT Test Case PASSED\n");
 				break;
 			} catch (Exception e) {
@@ -427,22 +551,31 @@ public class Pfs_student {
 
 				System.out.println("TC-13 Starting execution of student profile");
 				Utils.goBackToHome(driver, url, log);
-				Utils.bigSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "Click on Initial icon", log);
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.kerprofile, time, "Click on profile button", log);
-				driver.navigate().refresh();
-				Utils.smallSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.kerextracuricular, time, "Click on edit SVG", log);
-				Utils.clickXpath(driver, ActionXpath.kerfolioacdemics, time, "Click on Save", log);
-				Utils.clickXpath(driver, ActionXpath.kerclub, time, "Click on Save", log);
-				Utils.clickXpath(driver, ActionXpath.kerfootball, time, "Click on Save", log);
-				Utils.clickXpath(driver, ActionXpath.kerother, time, "Click on Save", log);
-				Utils.clickXpath(driver, ActionXpath.kerachivement, time, "Click on Save", log);
-				Utils.clickXpath(driver, ActionXpath.kerconduct, time, "Click on Save", log);
-				Utils.clickXpath(driver, ActionXpath.kerrequestcomplint, time, "Click on Save", log);
-				Utils.bigSleepBetweenClicks(1);
-				Utils.logg(log, "info", "  TC-13 Student profile test case PASSED  \n");
+				if (Utils.kernal(url)) {
+					Utils.bigSleepBetweenClicks(1);
+					Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "Click on Initial icon", log);
+					Utils.smallSleepBetweenClicks(1);
+					Utils.clickXpath(driver, ActionXpath.kerprofile, time, "Click on profile button", log);
+					driver.navigate().refresh();
+					Utils.smallSleepBetweenClicks(1);
+					Utils.clickXpath(driver, ActionXpath.kerextracuricular, time, "Click on edit SVG", log);
+					Utils.clickXpath(driver, ActionXpath.kerfolioacdemics, time, "Click on Save", log);
+					Utils.clickXpath(driver, ActionXpath.kerclub, time, "Click on Save", log);
+					Utils.clickXpath(driver, ActionXpath.kerfootball, time, "Click on Save", log);
+					Utils.clickXpath(driver, ActionXpath.kerother, time, "Click on Save", log);
+					Utils.clickXpath(driver, ActionXpath.kerachivement, time, "Click on Save", log);
+					Utils.clickXpath(driver, ActionXpath.kerconduct, time, "Click on Save", log);
+					Utils.clickXpath(driver, ActionXpath.kerrequestcomplint, time, "Click on Save", log);
+					Utils.bigSleepBetweenClicks(1);
+
+				} else {
+					Utils.clickXpath(driver, ActionXpath.feedback, time, "Click on feedback", log);
+					Utils.clickXpath(driver, ActionXpath.programc, time, "Click on program", log);
+					Utils.clickXpath(driver, ActionXpath.institude, time, "Click on Institute", log);
+					Utils.clickXpath(driver, ActionXpath.resoures, time, "Click on the resoures", log);
+
+				}
+				Utils.logg(log, "info", " TC-13 Student profile test case PASSED \n");
 
 				break;
 			} catch (Exception e) {
@@ -468,21 +601,26 @@ public class Pfs_student {
 		int RetryCount = 0;
 		while (true) {
 			try {
+				if (Utils.kernal(url)) {
+					System.out.println(" TC-14 Starting student edit profile education Details case execution");
+					Utils.goBackToHome(driver, url, log);
+					Utils.bigSleepBetweenClicks(1);
+					Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "Click on profile Icon", log);
+					Utils.clickXpath(driver, ActionXpath.kerprofile, time, "Click on profile button", log);
+					driver.navigate().refresh();
+					Utils.bigSleepBetweenClicks(1);
+					Utils.clickXpath(driver, ActionXpath.keroersonaldetails, time, "Click on education", log);
+					Utils.clickXpath(driver, ActionXpath.kereditdetail, time, "CLick on edit SVG", log);
+					Utils.callSendkeys(driver, ActionXpath.kermiddlename, "test", time, log);
+					Utils.clickXpath(driver, ActionXpath.kergender, time, "CLick on edit SVG", log);
+					Utils.clickXpath(driver, ActionXpath.kerselcetgender, time, "CLick on edit SVG", log);
+					Utils.callSendkeys(driver, ActionXpath.kerbirthplace, "test", time, log);
+					Utils.clickXpath(driver, ActionXpath.kersubmit, time, "CLick on edit SVG", log);
 
-				System.out.println(" TC-14 Starting student edit profile education Details case execution");
-				Utils.goBackToHome(driver, url, log);
-				Utils.bigSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.Stu_prName, time, "Click on profile Icon", log);
-				Utils.clickXpath(driver, ActionXpath.kerprofile, time, "Click on profile button", log);
-				driver.navigate().refresh();
-				Utils.bigSleepBetweenClicks(1);
-				Utils.clickXpath(driver, ActionXpath.keroersonaldetails, time, "Click on education", log);
-				Utils.clickXpath(driver, ActionXpath.kereditdetail, time, "CLick on edit SVG", log);
-				Utils.callSendkeys(driver, ActionXpath.kermiddlename, "test", time, log);
-				Utils.clickXpath(driver, ActionXpath.kergender, time, "CLick on edit SVG", log);
-				Utils.clickXpath(driver, ActionXpath.kerselcetgender, time, "CLick on edit SVG", log);
-				Utils.callSendkeys(driver, ActionXpath.kerbirthplace, "test", time, log);
-				Utils.clickXpath(driver, ActionXpath.kersubmit, time, "CLick on edit SVG", log);
+				} else {
+					Utils.clickXpath(driver, ActionXpath.resoures, time, "Click on the resoures", log);
+
+				}
 
 				Utils.logg(log, "info", " TC-14 Student profile edit  test case PASSED \n");
 				break;

@@ -474,6 +474,17 @@ public class Utils {
 	}
 
 	@Test
+	public static Boolean kernal(String url) {
+		String urlToMatch = "kernel-stg";
+		Pattern pt = Pattern.compile(urlToMatch);
+		Matcher m = pt.matcher(url);
+		while (m.find()) {
+			return true;
+		}
+		return false;
+	}
+
+	@Test
 	public static Boolean emailotplogin(String url) {
 		String urlToMatch = "AAA";
 		Pattern pt = Pattern.compile(urlToMatch);
@@ -578,7 +589,7 @@ public class Utils {
 
 	@Test
 	public static Boolean checkUrlToSkipTest(String url) {
-		String urlToMatch = "dev|portal-demo|jdinstitutedelhi|nsom|ltsta|ltpct|esscisamsung|jdinstitutedelhi|sbmppsjal|bimtech";
+		String urlToMatch = "dev|portal-demo|jdinstitutedelhi|nsom|ltsta|ltpct|esscisamsung|jdinstitutedelhi|sbmppsjal|bimtech|kernel";
 		Pattern pt = Pattern.compile(urlToMatch);
 		Matcher m = pt.matcher(url);
 		while (m.find()) {

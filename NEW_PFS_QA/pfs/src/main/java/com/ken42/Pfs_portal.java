@@ -120,8 +120,8 @@ public class Pfs_portal extends Thread {
 		// Utils.login(driver, studentEmail, PFSurl, log,csvCell);
 		// student_login_set = true;
 		// }
-		Utils.smallSleepBetweenClicks(2);
 
+		Utils.smallSleepBetweenClicks(2);
 		boolean signInPresent = false;
 		signInPresent = driver.findElements(By.xpath("//*[text()='Sign in'] | //*[text()='SIGN IN']")).size() > 0;
 		if (signInPresent) {
